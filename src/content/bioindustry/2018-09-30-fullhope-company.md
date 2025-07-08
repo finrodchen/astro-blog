@@ -1,5 +1,6 @@
 ---
 title: 富禾生醫免疫系統分析服務介紹
+description: 富禾生醫免疫系統分析服務的詳細介紹，包括癌症免疫指標、自體免疫疾病指標及流產風險評估等檢測項目。
 tags: bioindustry, regulation
 pubDate: 2018-09-30
 ---

@@ -1,5 +1,6 @@
 ---
 title: 台股資料爬蟲─Python筆記(2)
+description: 使用Python matplotlib和mplfinance模組繪製台股K線圖，包含均線和交易量顯示
 tags: python, regulation
 pubDate: 2021-10-08
 heroImage: https://i.imgur.com/y9uS8fm.png

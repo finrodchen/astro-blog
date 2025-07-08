@@ -1,5 +1,6 @@
 ---
 title: 用HackMD做簡報
+description: HackMD簡報功能教學，包含設定方式、分頁技巧、主題轉場及輸出方法
 tags: markdown, regulation, vscode
 pubDate: 2019-10-08
 heroImage: https://i.imgur.com/nHKflbD.png

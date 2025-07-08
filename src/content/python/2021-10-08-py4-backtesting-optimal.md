@@ -1,5 +1,6 @@
 ---
 title: 最佳化股票交易策略─Python筆記(4)
+description: 使用Python backtesting模組的Optimize功能最佳化交易策略，以不同指標尋找最適參數組合
 tags: python, regulation
 pubDate: 2021-10-08
 ---

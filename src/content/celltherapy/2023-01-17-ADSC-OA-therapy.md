@@ -1,5 +1,6 @@
 ---
 title: 間質幹細胞治療退化性關節炎QA
+description: 介紹間質幹細胞治療退化性關節炎的QA，包括目前常用的幹細胞種類、治療效果、修復過程等
 tags: ADSC, MSC, cell-threapy, regulation
 pubDate: 2023-01-17
 ---

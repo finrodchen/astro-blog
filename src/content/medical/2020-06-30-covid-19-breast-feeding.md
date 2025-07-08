@@ -1,5 +1,6 @@
 ---
 title: 母乳中發現COVID-19病毒?!─生醫新聞解讀
+description: 解讀德國研究發現母乳中COVID-19病毒RNA的報告，分析PCR檢測原理及專家對哺乳建議
 tags: medical, regulation, covid-19
 pubDate: 2020-06-30
 heroImage: https://i.imgur.com/eDVUStx.jpg

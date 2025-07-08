@@ -1,5 +1,6 @@
 ---
 title: 簡單的個人首頁「Hey Hey」
+description: 介紹 Hey Hey 這個簡單易用的個人名片網頁工具，可以快速建立個人品牌頁面。分享註冊使用方法和功能特色，適合作為個人行銷的輔助工具。
 tags: web-tool, regulation
 pubDate: 2022-07-26
 heroImage: https://i.imgur.com/V1evyRp.png

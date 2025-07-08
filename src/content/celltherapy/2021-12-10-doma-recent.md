@@ -1,5 +1,6 @@
 ---
 title: 特管辦法近況
+description: 特管辦法細胞治療計劃中的三個關鍵角色：主管機關、醫療機構與細胞製備中心的權責分工
 pubDate: 2021-12-10
 tags: cell-therapy, regulation
 heroImage: https://i.imgur.com/H2SzK4A.png

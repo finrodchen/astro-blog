@@ -1,6 +1,7 @@
 ---
 title: 國內體細胞治療產品之現行法規與審查暨新藥查驗登記加速核准機制研討會
-pubDate: 2013-10-08s
+description: 第五十七屆藥事論壇講座，探討體細胞治療產品的現行法規與審查機制，以及新藥查驗登記加速核准機制的相關內容。
+pubDate: 2013-10-08
 tags: bioindustry, pharmacology, 57th-pharmacyforum
 heroImage: https://i.imgur.com/ACmVPJn.png
 ---

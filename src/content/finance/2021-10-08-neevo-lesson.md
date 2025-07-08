@@ -1,5 +1,6 @@
 ---
 title: Neevo - 用零碎時間賺一杯咖啡
+description: Neevo平台介紹，透過協助AI訓練任務賺取零用錢，包含註冊流程、收款設定及任務執行
 tags: web-earning, regulation
 pubDate: 2021-10-08
 heroImage: https://i.imgur.com/4Ob1hf6.jpg

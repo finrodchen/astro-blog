@@ -1,5 +1,6 @@
 ---
 title: 「Marp」用VSCode做簡報?
+description: Marp擴充功能介紹，使用Markdown語法在VSCode中製作簡報，包含基本設定、自訂主題及輸出格式
 tags: markdown, regulation, vscode
 pubDate: 2019-10-07
 heroImage: https://i.imgur.com/okZsFwr.png

@@ -1,5 +1,6 @@
 ---
 title: 間質幹細胞治療早產兒支氣管發育不全
+description: 臍帶血間質幹細胞治療早產兒支氣管發育不全的第一期臨床試驗，評估安全性及療效
 tags: medical, regulation
 pubDate: 2019-09-22
 heroImage: https://i.imgur.com/rA8IpAJ.png

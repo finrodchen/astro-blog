@@ -1,5 +1,6 @@
 ---
 title: 試玩了一下Figma
+description: 體驗 Figma 這個熱門的 UI/UX 設計工具，分享使用心得並展示為 blog 製作的 App 版型設計。Figma 的線上協作功能讓它成為設計師的首選工具。
 tags: coding, regulation
 pubDate: 2022-06-30
 heroImage: https://i.imgur.com/HTtT4rr.png

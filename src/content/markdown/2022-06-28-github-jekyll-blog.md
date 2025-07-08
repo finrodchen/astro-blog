@@ -1,5 +1,6 @@
 ---
 title: 利用GitHub Pages建立自己的部落格
+description: 使用GitHub Pages和Jekyll引擎建立免費部落格的完整教學，包含Repository設定、基本配置及發文流程
 tags: markdown, regulation
 pubDate: 2022-06-28
 heroImage: https://i.imgur.com/MqTFW1u.png

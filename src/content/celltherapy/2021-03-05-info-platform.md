@@ -1,5 +1,6 @@
 ---
 title: 【特管辦法】如何使用「細胞治療技術資訊揭露平台」
+description: 細胞治療技術資訊揭露平台使用指南，包含計畫查詢、費用資訊及分段收費機制說明
 pubDate: 2021-03-05
 tags: cell-therapy, regulation
 heroImage: https://i.imgur.com/iBjVlrl.png

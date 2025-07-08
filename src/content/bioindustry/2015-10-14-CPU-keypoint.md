@@ -1,5 +1,6 @@
 ---
 title: 細胞製備中心建設與管理規範重點摘要
+description: 細胞製備中心建設與管理的重要規範要點，包括GMP規範、中心功能要求、面積標準、人員資格等關鍵內容摘要。
 tags: bioindustry, regulation
 pubDate: 2015-10-14
 ---

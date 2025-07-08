@@ -1,5 +1,6 @@
 ---
 title: 樂迦再生科技
+description: 樂迦再生科技公司介紹，首輪募資20億元，將打造亞洲最大自動化細胞工廠
 tags: bioindustry, regulation
 pubDate: 2021-10-06
 heroImage: https://i.imgur.com/5wIiKxe.png

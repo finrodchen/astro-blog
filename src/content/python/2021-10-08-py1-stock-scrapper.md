@@ -1,5 +1,6 @@
 ---
 title: 台股資料爬蟲─Python筆記(1)
+description: 使用Python twstock模組爬取台股資料的教學，包括資料抓取、處理及保存為CSV檔案
 tags: python, regulation
 pubDate: 2021-10-08
 heroImage: https://i.imgur.com/buOtYgR.png

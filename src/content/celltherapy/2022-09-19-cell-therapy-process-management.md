@@ -1,5 +1,6 @@
 ---
 title: 如何做好細胞製程管理
+description: 介紹如何透過生產追蹤系統管理細胞治療計劃的生產過程，並探討細胞治療產品的特性與挑戰
 tags: cell-therapy, regulation
 pubDate: 2022-09-19
 heroImage: https://i.imgur.com/ljMIjky.png

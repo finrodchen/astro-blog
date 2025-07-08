@@ -1,5 +1,6 @@
 ---
 title: 回測股票交易策略─Python筆記(3)
+description: 使用Python backtesting模組進行股票交易策略回測，以均線交叉策略為例進行實戰演練
 tags: python, regulation
 pubDate: 2021-10-08
 ---

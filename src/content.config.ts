@@ -15,4 +15,97 @@ const blog = defineCollection({
   }),
 });
 
-export const collections = { blog };
+const bioindustry = defineCollection({
+  loader: glob({ base: "./src/content/bioindustry", pattern: "**/*.{md,mdx}" }),
+  schema: z.object({
+    title: z.string(),
+    description: z.string().optional(),
+    pubDate: z.coerce.date(),
+    updatedDate: z.coerce.date().optional(),
+    heroImage: z.string().optional(),
+    tags: z.union([z.string(), z.array(z.string())]).optional(),
+  }),
+});
+
+const celltherapy = defineCollection({
+  loader: glob({ base: "./src/content/celltherapy", pattern: "**/*.{md,mdx}" }),
+  schema: z.object({
+    title: z.string(),
+    description: z.string().optional(),
+    pubDate: z.coerce.date(),
+    updatedDate: z.coerce.date().optional(),
+    heroImage: z.string().optional(),
+    tags: z.union([z.string(), z.array(z.string())]).optional(),
+  }),
+});
+
+const finance = defineCollection({
+  loader: glob({ base: "./src/content/finance", pattern: "**/*.{md,mdx}" }),
+  schema: z.object({
+    title: z.string(),
+    description: z.string().optional(),
+    pubDate: z.coerce.date(),
+    updatedDate: z.coerce.date().optional(),
+    heroImage: z.string().optional(),
+    tags: z.union([z.string(), z.array(z.string())]).optional(),
+  }),
+});
+
+const markdown = defineCollection({
+  loader: glob({ base: "./src/content/markdown", pattern: "**/*.{md,mdx}" }),
+  schema: z.object({
+    title: z.string(),
+    description: z.string().optional(),
+    pubDate: z.coerce.date(),
+    updatedDate: z.coerce.date().optional(),
+    heroImage: z.string().optional(),
+    tags: z.union([z.string(), z.array(z.string())]).optional(),
+  }),
+});
+
+const medical = defineCollection({
+  loader: glob({ base: "./src/content/medical", pattern: "**/*.{md,mdx}" }),
+  schema: z.object({
+    title: z.string(),
+    description: z.string().optional(),
+    pubDate: z.coerce.date(),
+    updatedDate: z.coerce.date().optional(),
+    heroImage: z.string().optional(),
+    tags: z.union([z.string(), z.array(z.string())]).optional(),
+  }),
+});
+
+const python = defineCollection({
+  loader: glob({ base: "./src/content/python", pattern: "**/*.{md,mdx}" }),
+  schema: z.object({
+    title: z.string(),
+    description: z.string().optional(),
+    pubDate: z.coerce.date(),
+    updatedDate: z.coerce.date().optional(),
+    heroImage: z.string().optional(),
+    tags: z.union([z.string(), z.array(z.string())]).optional(),
+  }),
+});
+
+const work = defineCollection({
+  loader: glob({ base: "./src/content/work", pattern: "**/*.{md,mdx}" }),
+  schema: z.object({
+    title: z.string(),
+    description: z.string().optional(),
+    pubDate: z.coerce.date(),
+    updatedDate: z.coerce.date().optional(),
+    heroImage: z.string().optional(),
+    tags: z.union([z.string(), z.array(z.string())]).optional(),
+  }),
+});
+
+export const collections = { 
+  blog, 
+  bioindustry, 
+  celltherapy, 
+  finance, 
+  markdown, 
+  medical, 
+  python, 
+  work 
+};
