@@ -3,6 +3,7 @@ title: 最佳化股票交易策略─Python筆記(4)
 description: 使用Python backtesting模組的Optimize功能最佳化交易策略，以不同指標尋找最適參數組合
 tags: python, regulation
 pubDate: 2021-10-08
+heroImage: https://i.imgur.com/buOtYgR.png
 ---
 
 上一篇文章我們完成了使用`Backtesting.py`模組做的個股基本交易策略回測程式，其中用的是常見的均線交錯判定買/賣點，而在本篇當中，我們要嘗試使用模組中`Optimize`的功能，找出特定個股過往最適合的均線判定策略，做為未來交易策略的參考。程式的構成基本上是相同的，但在執行回測時會加入最佳化設定，由程式計算合適的交易方式，達到極大的利潤。

@@ -3,9 +3,8 @@ title: 臨床試驗資訊系統
 description: 臨床試驗資訊系統的完整介紹，涵蓋研究人才資料庫、受試者資料庫、合約管理系統、專用門診藥局等功能模組。
 tags: bioindustry, regulation
 pubDate: 2019-08-31
+heroImage: https://img.finrod.xyz/2025/07/f74cf85205e78a3e9665d542f9f6f184.png
 ---
-
-# 臨床試驗資訊系統
 
 ## 改善臨床試驗申請/建立流程
 

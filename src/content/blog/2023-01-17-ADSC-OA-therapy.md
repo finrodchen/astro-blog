@@ -3,9 +3,8 @@ title: 間質幹細胞治療退化性關節炎QA
 description: 介紹間質幹細胞治療退化性關節炎的QA，包括目前常用的幹細胞種類、治療效果、修復過程等
 tags: ADSC, MSC, cell-threapy, regulation
 pubDate: 2023-01-17
+heroImage: https://img.finrod.xyz/2025/07/206e0900b1ce006716fece1744634be6.png
 ---
-
-# 間質幹細胞治療退化性關節炎QA
 
 ### 目前最常用在膝蓋、脊髓損傷的幹細胞是「間質幹細胞」，在膝蓋、脊髓損傷上，可以達到何種治療效果？
 

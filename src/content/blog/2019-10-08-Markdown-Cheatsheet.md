@@ -3,6 +3,7 @@ title: Markdown Cheatsheet
 description: Markdown語法快速參考指南，包含標題、重點、列表、連結、圖片、程式碼等基本語法說明
 tags: markdown, regulation
 pubDate: 2019-10-08
+heroImage: https://img.finrod.xyz/2025/07/4bd81fd68cc642ba50474452da281055.png
 ---
 
 轉載自：[bit.ly/mdcheat](https://bit.ly/mdcheat)
