@@ -1,0 +1,67 @@
+
+- company: "喜躍生醫"
+  summary: 
+  logo: "/img/companylogos/xiyue.png"
+  url: "https://xiyuebiomed.com/"
+  positions:
+  - title: "資訊管理人"
+    startdate: 2020-01-01
+    summary: "行政管理處資訊管理人，負責公司內部資訊資安議題，管理進銷存系統、內部網路系統及企業內部服務"
+    projects: 
+  - title: "研發主任"
+    startdate: 2022-05-23
+    summary: "研究發展部主任，負責協調各研發專案資源分配，專案報告審查；另負責於「特定醫療儀器及醫療技術技術管理辦法」規範之細胞治療計畫案件完整流程"
+    projects: 
+
+- company: "光麗生醫"
+  summary: "成立於2009年，為細胞治療產業元祖級公司，也是第一間儲存「成人幹細胞」的公司，於2023年初因IPO需求更名為喜躍生醫"
+  logo: "/img/companylogos/guangli.png"
+  url: "https://guangli.com.tw/"
+  positions:
+  - title: "生產主任"
+    startdate: 2018-02-01
+    enddate: 2022-01-31
+    summary: "生產製造部主任，負責協調生產排程，簽署細胞產品製程報告；另負責或參與於「特定醫療儀器及醫療技術技術管理辦法」規範之細胞治療計畫案件完整流程"
+    projects:
+      - "參與免疫殺手細胞製程開發"
+      - "主導膝關節脂肪取得並建立脂肪間質幹細胞庫技術開發之人體研究"
+      - "主導抽脂後廢棄脂肪建立脂肪間質幹細胞庫技術開發之人體研究"
+      - "特定醫療儀器及醫療技術技術管理辦法：免疫殺手細胞治療第四期實體癌專案管理"
+      - "特定醫療儀器及醫療技術技術管理辦法：脂肪間質幹細胞治療退化性關節炎專案管理"
+  - title: "副研究員"
+    startdate: 2014-02-01
+    enddate: 2018-01-31
+    summary: "研究發展部研究員，負責收集彙整尖端技術資訊及臨床研究成果、填寫與檢核細胞產品製程報告、執行每日檢查並參與內部能力試驗"
+    projects:
+      - "參與脂肪間質幹細胞治療漸凍症臨床研究申請"
+      - "參與脂肪間質幹細胞治療漸凍症恩慈治療申請"
+  - title: "製程工程師"
+    startdate: 2012-02-01
+    enddate: 2014-01-31
+    summary: "生產製造部製程工程師，主要負責脂肪間質幹細胞及臍帶間質幹細胞組織分離與幹細胞培養"
+    projects:
+      - "參與脂肪間質幹細胞治療二型糖尿病臨床研究申請"
+      - "參與製程ISO文件系統建置專案"
+
+
+#- company: American Money Group, Inc
+#  summary:
+#  logo: /img/companylogos/amg.jpg
+#  url: http://www.americanmoneygroup.com/
+#  positions:
+#  - title: IT Consultant
+#    startdate: 2009-03-01
+#    enddate: 2011-05-01
+#    summary: Provided a broad range of IT services. Helpdesk support, computer repair, VoIP management & configuration, as well as website and intranet maintenance.
+#    projects:
+
+#- company: Me-N-Ed's Pizza Parlor
+#  summary:
+#  logo: /img/companylogos/mne.jpg
+#  url: https://www.meneds.com/
+#  positions:
+#  - title: Employee
+#    startdate: 2002-09-01
+#    enddate: 2008-10-01
+#    summary: A family owned business from 1963 to 2020. Worked in the kitchen and the bar, as a cashier and a cook. Helped with business paperwork, quickbooks, building spreadsheets, and in recent years during the COVID pandemic, helped to run social media to keep business going strong with a delivery only business.
+#    projects:

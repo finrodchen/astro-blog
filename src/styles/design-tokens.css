@@ -1,0 +1,73 @@
+/* Design Tokens - 設計系統變數 */
+:root {
+  /* 顏色系統 */
+  --color-primary: rgb(var(--accent));
+  --color-text-primary: rgb(var(--black));
+  --color-text-secondary: rgb(var(--gray));
+  --color-background: rgb(var(--gray-light));
+  --color-surface: #ffffff;
+  
+  /* 間距系統 */
+  --spacing-xs: 0.25rem;    /* 4px */
+  --spacing-sm: 0.5rem;     /* 8px */
+  --spacing-md: 1rem;       /* 16px */
+  --spacing-lg: 1.5rem;     /* 24px */
+  --spacing-xl: 2rem;       /* 32px */
+  --spacing-2xl: 3rem;      /* 48px */
+  --spacing-3xl: 4rem;      /* 64px */
+  
+  /* 字體大小 */
+  --font-size-xs: 0.75rem;     /* 12px */
+  --font-size-sm: 0.875rem;    /* 14px */
+  --font-size-base: 1rem;      /* 16px */
+  --font-size-lg: 1.125rem;    /* 18px */
+  --font-size-xl: 1.25rem;     /* 20px */
+  --font-size-2xl: 1.5rem;     /* 24px */
+  --font-size-3xl: 1.875rem;   /* 30px */
+  --font-size-4xl: 2.25rem;    /* 36px */
+  --font-size-5xl: 3rem;       /* 48px */
+  
+  /* 行高 */
+  --line-height-tight: 1.25;
+  --line-height-normal: 1.5;
+  --line-height-relaxed: 1.75;
+  
+  /* 邊框半徑 */
+  --border-radius-sm: 0.25rem;   /* 4px */
+  --border-radius-md: 0.5rem;    /* 8px */
+  --border-radius-lg: 0.75rem;   /* 12px */
+  --border-radius-xl: 1rem;      /* 16px */
+  
+  /* 陰影 */
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  
+  /* 轉場動畫 */
+  --transition-fast: 0.15s ease;
+  --transition-normal: 0.2s ease;
+  --transition-slow: 0.3s ease;
+  
+  /* 斷點 */
+  --breakpoint-sm: 640px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 1024px;
+  --breakpoint-xl: 1280px;
+  
+  /* 文章列表特定變數 */
+  --post-list-max-width: 960px;
+  --post-list-gap: var(--spacing-xl);
+  --post-list-gap-mobile: var(--spacing-sm);
+  --post-card-border-radius: var(--border-radius-lg);
+  --post-featured-width: 70%;
+  --post-featured-max-width: 600px;
+  --post-title-featured-size: 2.369rem;
+  --post-title-featured-size-mobile: 1.563rem;
+  
+  /* 統一圖片尺寸變數 */
+  --post-image-aspect-ratio: 16 / 9;
+  --post-image-width: 720px;
+  --post-image-height: 405px;
+  --hero-image-width: 1200px;
+  --hero-image-height: 675px;
+}

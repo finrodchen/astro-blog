@@ -1,0 +1,42 @@
+#- skill: string
+#  description: string
+#  list:
+#    - array
+#    - of
+#    - strings
+#
+# Template supports both a description AND a skill list, however it may look best if only one or the
+# other is used. Lists are sorted and concatenated without line breaks separated by • (&bull;)
+
+- skill: 基礎生化實驗
+  description: "5年以上經驗於中草藥研究領域，包含活性成份分離純化、成份定性定量、化合物結構分析以及生化活性分析(in vitro/ in vivo)"
+- skill: 細胞生化實驗
+  description: "10年以上經驗於人類細胞組織領域，專注於成體幹細胞製程開發最佳化，應用於疾病治療新要開發"
+- skill: 專案計畫管理
+  description: "專案提案、執行及管理，統籌規劃專案資源及內部控制流程"
+- skill: 工具及技術  
+  list:
+    - Digiwin iGP Workflow
+    - AWS Services
+    - Docker
+    - Fiddler
+    - Git
+    - Google Workspace
+    - Microsoft Office
+    - PaloAlto Firewall
+    - Postman
+    - PowerShell
+    - SQL Server
+    - SVN
+    - VS Code
+    - Web Frontend/Backend
+- skill: 語言
+  list:
+    - 中文 - Native
+    - 台語 - Native
+    - 英文 - Advanced
+    - 日文 - Beginner
+
+# HCHB to add:
+# Azure, Bicep, Azure DevOps, Pipelines (YAML), DacFx
+# Splunk, SentryOne, JAMS, Rancher, DBADash, 

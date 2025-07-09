@@ -39,56 +39,8 @@ const celltherapy = defineCollection({
   }),
 });
 
-const finance = defineCollection({
-  loader: glob({ base: "./src/content/finance", pattern: "**/*.{md,mdx}" }),
-  schema: z.object({
-    title: z.string(),
-    description: z.string().optional(),
-    pubDate: z.coerce.date(),
-    updatedDate: z.coerce.date().optional(),
-    heroImage: z.string().optional(),
-    tags: z.union([z.string(), z.array(z.string())]).optional(),
-  }),
-});
-
-const markdown = defineCollection({
-  loader: glob({ base: "./src/content/markdown", pattern: "**/*.{md,mdx}" }),
-  schema: z.object({
-    title: z.string(),
-    description: z.string().optional(),
-    pubDate: z.coerce.date(),
-    updatedDate: z.coerce.date().optional(),
-    heroImage: z.string().optional(),
-    tags: z.union([z.string(), z.array(z.string())]).optional(),
-  }),
-});
-
-const medical = defineCollection({
-  loader: glob({ base: "./src/content/medical", pattern: "**/*.{md,mdx}" }),
-  schema: z.object({
-    title: z.string(),
-    description: z.string().optional(),
-    pubDate: z.coerce.date(),
-    updatedDate: z.coerce.date().optional(),
-    heroImage: z.string().optional(),
-    tags: z.union([z.string(), z.array(z.string())]).optional(),
-  }),
-});
-
 const coding = defineCollection({
   loader: glob({ base: "./src/content/coding", pattern: "**/*.{md,mdx}" }),
-  schema: z.object({
-    title: z.string(),
-    description: z.string().optional(),
-    pubDate: z.coerce.date(),
-    updatedDate: z.coerce.date().optional(),
-    heroImage: z.string().optional(),
-    tags: z.union([z.string(), z.array(z.string())]).optional(),
-  }),
-});
-
-const work = defineCollection({
-  loader: glob({ base: "./src/content/work", pattern: "**/*.{md,mdx}" }),
   schema: z.object({
     title: z.string(),
     description: z.string().optional(),
@@ -102,10 +54,6 @@ const work = defineCollection({
 export const collections = { 
   blog, 
   biotechnology, 
-  celltherapy, 
-  finance, 
-  markdown, 
-  medical, 
-  coding,
-  work 
+  celltherapy,
+  coding
 };

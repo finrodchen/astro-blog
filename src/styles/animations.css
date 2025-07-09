@@ -1,0 +1,392 @@
+/* 動畫系統 - 頁面轉場和微互動 */
+
+/* 動畫變數定義 */
+:root {
+  /* 動畫持續時間 */
+  --animation-fast: 0.15s;
+  --animation-normal: 0.3s;
+  --animation-slow: 0.6s;
+  --animation-very-slow: 1s;
+  
+  /* 緩動函數 */
+  --ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-out: cubic-bezier(0, 0, 0.2, 1);
+  --ease-in: cubic-bezier(0.4, 0, 1, 1);
+  --ease-bounce: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  
+  /* 變換距離 */
+  --translate-sm: 8px;
+  --translate-md: 16px;
+  --translate-lg: 32px;
+}
+
+/* 頁面轉場動畫 */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(var(--translate-md));
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(calc(-1 * var(--translate-md)));
+  }
+}
+
+@keyframes slideInFromLeft {
+  from {
+    opacity: 0;
+    transform: translateX(calc(-1 * var(--translate-lg)));
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInFromRight {
+  from {
+    opacity: 0;
+    transform: translateX(var(--translate-lg));
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* 載入動畫 */
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes bounce {
+  0%, 20%, 53%, 80%, 100% {
+    transform: translateY(0);
+  }
+  40%, 43% {
+    transform: translateY(-8px);
+  }
+  70% {
+    transform: translateY(-4px);
+  }
+  90% {
+    transform: translateY(-2px);
+  }
+}
+
+/* 頁面進入動畫 */
+.page-enter {
+  animation: fadeIn var(--animation-slow) var(--ease-out) forwards;
+}
+
+.page-enter-from-left {
+  animation: slideInFromLeft var(--animation-slow) var(--ease-out) forwards;
+}
+
+.page-enter-from-right {
+  animation: slideInFromRight var(--animation-slow) var(--ease-out) forwards;
+}
+
+.page-scale-in {
+  animation: scaleIn var(--animation-normal) var(--ease-out) forwards;
+}
+
+/* 內容區塊動畫 */
+.content-animate {
+  opacity: 0;
+  transform: translateY(var(--translate-md));
+  animation: fadeIn var(--animation-slow) var(--ease-out) forwards;
+}
+
+.content-animate:nth-child(1) { animation-delay: 0.1s; }
+.content-animate:nth-child(2) { animation-delay: 0.2s; }
+.content-animate:nth-child(3) { animation-delay: 0.3s; }
+.content-animate:nth-child(4) { animation-delay: 0.4s; }
+.content-animate:nth-child(5) { animation-delay: 0.5s; }
+
+/* 微互動動畫 */
+.hover-lift {
+  transition: transform var(--animation-normal) var(--ease-out), 
+              box-shadow var(--animation-normal) var(--ease-out);
+}
+
+.hover-lift:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--theme-shadow-lg);
+}
+
+.hover-scale {
+  transition: transform var(--animation-fast) var(--ease-out);
+}
+
+.hover-scale:hover {
+  transform: scale(1.05);
+}
+
+.hover-glow {
+  transition: box-shadow var(--animation-normal) var(--ease-out);
+}
+
+.hover-glow:hover {
+  box-shadow: 0 0 20px rgba(var(--theme-primary-rgb, 35, 55, 255), 0.3);
+}
+
+/* 按鈕動畫 */
+.btn-animate {
+  position: relative;
+  overflow: hidden;
+  transition: all var(--animation-normal) var(--ease-out);
+}
+
+.btn-animate::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left var(--animation-slow) var(--ease-out);
+}
+
+.btn-animate:hover::before {
+  left: 100%;
+}
+
+.btn-animate:active {
+  transform: scale(0.98);
+}
+
+/* 卡片動畫 */
+.card-animate {
+  transition: all var(--animation-normal) var(--ease-out);
+  transform-origin: center;
+}
+
+.card-animate:hover {
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: var(--theme-shadow-lg);
+}
+
+/* 文字動畫 */
+.text-shimmer {
+  background: linear-gradient(
+    90deg,
+    var(--theme-text-primary) 0%,
+    var(--theme-primary) 50%,
+    var(--theme-text-primary) 100%
+  );
+  background-size: 200% 100%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shimmer 2s ease-in-out infinite;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+/* 載入狀態動畫 */
+.loading-pulse {
+  animation: pulse 2s ease-in-out infinite;
+}
+
+.loading-spin {
+  animation: spin 1s linear infinite;
+}
+
+.loading-bounce {
+  animation: bounce 1s ease-in-out infinite;
+}
+
+/* 滾動觸發動畫 */
+.scroll-reveal {
+  opacity: 0;
+  transform: translateY(var(--translate-lg));
+  transition: all var(--animation-slow) var(--ease-out);
+}
+
+.scroll-reveal.revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* 主題切換動畫 */
+.theme-transition {
+  transition: background-color var(--animation-normal) var(--ease-out),
+              color var(--animation-normal) var(--ease-out),
+              border-color var(--animation-normal) var(--ease-out),
+              box-shadow var(--animation-normal) var(--ease-out);
+}
+
+/* 響應式動畫控制 */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  
+  .scroll-reveal {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* 焦點動畫 */
+.focus-ring {
+  outline: none;
+  position: relative;
+}
+
+.focus-ring::after {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  border: 2px solid var(--theme-primary);
+  border-radius: inherit;
+  opacity: 0;
+  transform: scale(0.95);
+  transition: all var(--animation-fast) var(--ease-out);
+}
+
+.focus-ring:focus::after {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* 頁面載入動畫 */
+.page-loader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--theme-bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  opacity: 1;
+  transition: opacity var(--animation-normal) var(--ease-out);
+}
+
+.page-loader.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.loader-spinner {
+  width: 40px;
+  height: 40px;
+  border: 3px solid var(--theme-border);
+  border-top: 3px solid var(--theme-primary);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+/* 導航動畫 */
+.nav-item {
+  position: relative;
+  transition: color var(--animation-fast) var(--ease-out);
+}
+
+.nav-item::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--theme-primary);
+  transition: width var(--animation-normal) var(--ease-out);
+}
+
+.nav-item:hover::after,
+.nav-item.active::after {
+  width: 100%;
+}
+
+/* 圖片載入動畫 */
+.image-fade-in {
+  opacity: 0;
+  transition: opacity var(--animation-slow) var(--ease-out);
+}
+
+.image-fade-in.loaded {
+  opacity: 1;
+}
+
+/* 錯誤狀態動畫 */
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  10%, 30%, 50%, 70%, 90% { transform: translateX(-4px); }
+  20%, 40%, 60%, 80% { transform: translateX(4px); }
+}
+
+.error-shake {
+  animation: shake 0.5s ease-in-out;
+}
+
+/* 成功狀態動畫 */
+@keyframes checkmark {
+  0% {
+    stroke-dashoffset: 100;
+  }
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+
+.success-checkmark {
+  stroke-dasharray: 100;
+  animation: checkmark 0.5s ease-in-out forwards;
+}

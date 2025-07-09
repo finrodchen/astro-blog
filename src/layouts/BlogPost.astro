@@ -21,19 +21,27 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
 			}
 			.hero-image {
 				width: 100%;
+				margin-bottom: var(--spacing-lg);
 			}
 			.hero-image img {
 				display: block;
 				margin: 0 auto;
-				border-radius: 12px;
-				box-shadow: var(--box-shadow);
+				border-radius: var(--border-radius-lg);
+				box-shadow: var(--shadow-md);
+				width: 100%;
+				max-width: 800px;
+				height: 450px;
+				object-fit: cover;
+				aspect-ratio: var(--post-image-aspect-ratio);
+				background-color: #ffffff;
+				padding: var(--spacing-xs);
 			}
 			.prose {
 				width: 720px;
 				max-width: calc(100% - 2em);
 				margin: auto;
 				padding: 1em;
-				color: rgb(var(--gray-dark));
+				color: var(--theme-text-primary);
 			}
 			.title {
 				margin-bottom: 1em;
@@ -43,26 +51,39 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
 			}
 			.title h1 {
 				margin: 0 0 0.5em 0;
+				color: var(--theme-text-primary);
 			}
 			.date {
 				margin-bottom: 0.5em;
-				color: rgb(var(--gray));
+				color: var(--theme-text-secondary);
 			}
 			.last-updated-on {
 				font-style: italic;
+			}
+			
+			/* 響應式設計 */
+			@media (max-width: 720px) {
+				.hero-image img {
+					height: 250px;
+					max-width: 100%;
+				}
+				
+				.prose {
+					padding: 0.5em;
+				}
 			}
 		</style>
 	</head>
 
 	<body>
 		<Header />
-		<main>
-			<article>
+		<main class="page-enter">
+			<article class="content-animate">
 				<div class="hero-image">
-					{heroImage && <img width={1020} height={510} src={heroImage} alt="" />}
+					{heroImage && <img width={1200} height={675} src={heroImage} alt="" />}
 				</div>
 				<div class="prose">
-					<div class="title">
+					<div class="title content-animate">
 						<div class="date">
 							<FormattedDate date={pubDate} />
 							{
@@ -76,7 +97,9 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
 						<h1>{title}</h1>
 						<hr />
 					</div>
-					<slot />
+					<div class="content-animate">
+						<slot />
+					</div>
 				</div>
 			</article>
 		</main>

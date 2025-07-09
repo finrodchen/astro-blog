@@ -2,7 +2,28 @@
 import BaseHead from '../components/BaseHead.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+import FormattedDate from '../components/FormattedDate.astro';
 import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
+import { getCollection } from 'astro:content';
+
+// 獲取所有文章並按日期排序，取最新的6篇
+const allPosts = await getCollection('blog');
+const allCodingPosts = await getCollection('coding');
+const allBiotechPosts = await getCollection('biotechnology');
+const allCelltherapyPosts = await getCollection('celltherapy');
+
+// 合併所有文章並添加分類信息
+const combinedPosts = [
+	...allPosts.map(post => ({ ...post, category: 'blog' })),
+	...allCodingPosts.map(post => ({ ...post, category: 'coding' })),
+	...allBiotechPosts.map(post => ({ ...post, category: 'biotechnology' })),
+	...allCelltherapyPosts.map(post => ({ ...post, category: 'celltherapy' }))
+];
+
+// 按發布日期排序並取前6篇
+const recentPosts = combinedPosts
+	.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
+	.slice(0, 6);
 ---
 
 <!doctype html>
@@ -12,39 +33,202 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 	</head>
 	<body>
 		<Header />
-		<main>
-			<h1>🧑‍🚀 Hello, Astronaut!</h1>
-			<p>
-				Welcome to the official <a href="https://astro.build/">Astro</a> blog starter template. This
-				template serves as a lightweight, minimally-styled starting point for anyone looking to build
-				a personal website, blog, or portfolio with Astro.
-			</p>
-			<p>
-				This template comes with a few integrations already configured in your
-				<code>astro.config.mjs</code> file. You can customize your setup with
-				<a href="https://astro.build/integrations">Astro Integrations</a> to add tools like Tailwind,
-				React, or Vue to your project.
-			</p>
-			<p>Here are a few ideas on how to get started with the template:</p>
-			<ul>
-				<li>Edit this page in <code>src/pages/index.astro</code></li>
-				<li>Edit the site header items in <code>src/components/Header.astro</code></li>
-				<li>Add your name to the footer in <code>src/components/Footer.astro</code></li>
-				<li>Check out the included blog posts in <code>src/content/blog/</code></li>
-				<li>Customize the blog post page layout in <code>src/layouts/BlogPost.astro</code></li>
-			</ul>
-			<p>
-				Have fun! If you get stuck, remember to <a href="https://docs.astro.build/"
-					>read the docs
-				</a> or <a href="https://astro.build/chat">join us on Discord</a> to ask questions.
-			</p>
-			<p>
-				Looking for a blog template with a bit more personality? Check out <a
-					href="https://github.com/Charca/astro-blog-template"
-					>astro-blog-template
-				</a> by <a href="https://twitter.com/Charca">Maxi Ferreira</a>.
-			</p>
+		<main class="page-enter">
+			<section class="hero-section">
+				<h4 class="content-animate" align="left">
+				Thoughts and Ideas.
+				</h4>
+				<div class="hero-images">
+					<img src="https://img.finrod.xyz/2025/07/72587f0a41a5a93ba1b56cfbaacbfb13.png" alt="Hero Image 1" class="hero-image-1 content-animate" loading="lazy" />
+				</div>
+			</section>
+			<section class="recent-posts-section">
+				<h2 class="content-animate">近期文章</h2>
+				<div class="recent-posts-grid">
+					{recentPosts.map((post, index) => (
+						<article class="recent-post-card content-animate" style={`animation-delay: ${index * 0.1}s`}>
+							<a href={`/${post.category}/${post.id}/`} class="recent-post-link">
+								<img 
+									src={post.data.heroImage} 
+									alt={post.data.title || ''}
+									class="recent-post-image"
+									loading="lazy"
+								/>
+								<div class="recent-post-content">
+									<span class="recent-post-category">{post.category}</span>
+									<h3 class="recent-post-title">{post.data.title}</h3>
+									<p class="recent-post-date">
+										<FormattedDate date={post.data.pubDate} />
+									</p>
+								</div>
+							</a>
+						</article>
+					))}
+				</div>
+			</section>
 		</main>
 		<Footer />
 	</body>
 </html>
+
+<style>
+	.hero-section {
+		margin-bottom: 2rem;
+	}
+
+	.hero-images {
+		display: flex;
+		gap: 1rem;
+		margin: 2rem 0;
+		justify-content: left;
+		flex-wrap: wrap;
+	}
+
+	.hero-image-1,
+	.hero-image-2 {
+		max-width: 100%;
+		height: auto;
+		border-radius: 8px;
+		box-shadow: var(--theme-shadow-md);
+		transition: transform 0.3s ease, box-shadow 0.3s ease;
+		background-color: #ffffff;
+		padding: var(--spacing-xs, 0.25rem);
+	}
+
+	.hero-image-1 {
+		max-width: 90%;
+		width: 800px;
+		min-width: 500px;
+	}
+
+	.hero-image-1:hover,
+	.hero-image-2:hover {
+		transform: translateY(-4px);
+		box-shadow: var(--theme-shadow-lg);
+	}
+
+	/* Recent Posts Section */
+	.recent-posts-section {
+		margin: 3rem 0;
+		padding: 0 1rem;
+	}
+
+	.recent-posts-section h2 {
+		text-align: left;
+		margin-bottom: 2rem;
+		color: var(--theme-text-primary);
+		font-size: 2rem;
+	}
+
+	.recent-posts-grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+		gap: 1.5rem;
+		max-width: 1200px;
+		margin: 0 auto;
+	}
+
+	.recent-post-card {
+		border-radius: 12px;
+		overflow: hidden;
+		box-shadow: var(--theme-shadow-md);
+		transition: transform 0.3s ease, box-shadow 0.3s ease;
+		background: var(--theme-bg-secondary);
+		border: 1px solid var(--theme-border);
+	}
+
+	.recent-post-card:hover {
+		transform: translateY(-4px);
+		box-shadow: var(--theme-shadow-lg);
+	}
+
+	.recent-post-link {
+		display: block;
+		text-decoration: none;
+		color: inherit;
+		height: 100%;
+	}
+
+	.recent-post-image {
+		width: 100%;
+		height: 200px;
+		object-fit: cover;
+		background-color: #ffffff;
+		padding: var(--spacing-xs, 0.25rem);
+	}
+
+	.recent-post-content {
+		padding: 1rem;
+	}
+
+	.recent-post-category {
+		display: inline-block;
+		background: var(--theme-primary);
+		color: white;
+		padding: 0.25rem 0.75rem;
+		border-radius: 20px;
+		font-size: 0.75rem;
+		font-weight: 600;
+		text-transform: uppercase;
+		margin-bottom: 0.5rem;
+	}
+
+	.recent-post-title {
+		margin: 0.5rem 0;
+		font-size: 1.1rem;
+		font-weight: 600;
+		color: var(--theme-text-primary);
+		line-height: 1.4;
+		display: -webkit-box;
+		-webkit-line-clamp: 2;
+		-webkit-box-orient: vertical;
+		overflow: hidden;
+	}
+
+	.recent-post-date {
+		margin: 0;
+		font-size: 0.875rem;
+		color: var(--theme-text-muted);
+	}
+
+	@media (max-width: 768px) {
+		.hero-images {
+			flex-direction: column;
+			align-items: center;
+		}
+
+		.hero-image-1,
+		.hero-image-2 {
+			max-width: 90%;
+		}
+
+		.recent-posts-grid {
+			grid-template-columns: 1fr;
+			gap: 1rem;
+		}
+
+		.recent-posts-section {
+			padding: 0 0.5rem;
+		}
+
+		.recent-posts-section h2 {
+			font-size: 1.5rem;
+		}
+	}
+
+	@media (min-width: 769px) {
+		.hero-image-1 {
+			max-width: 70%;
+			width: 900px;
+		}
+		.hero-image-2 {
+			max-width: 45%;
+		}
+	}
+
+	@media (min-width: 1024px) {
+		.recent-posts-grid {
+			grid-template-columns: repeat(3, 1fr);
+		}
+	}
+</style>

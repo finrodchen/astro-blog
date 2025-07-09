@@ -1,0 +1,625 @@
+---
+import { resumeData, skills, experience, education, projects, interests, links, recognitions } from '../data/resume.ts';
+import { formatDate, calculateJobDuration } from '../utils/dateUtils';
+---
+
+<div class="resume-container">
+  <!-- Header Section -->
+  <header class="page-header">
+    <div class="header-main">
+      {resumeData.header.photo && (
+        <div class="profile-photo">
+          <img src={resumeData.header.photo} alt={`${resumeData.header.name} 的照片`} class="profile-image" />
+        </div>
+      )}
+      
+      <div class="header-content">
+        <div class="header-title">
+          <span class="header-name">{resumeData.header.name}</span>
+          {resumeData.header.suffix && (
+            <span class="header-suffix">, {resumeData.header.suffix}</span>
+          )}
+        </div>
+    
+        {resumeData.header.display_contact_info && (
+          <div class="header-contact-info">
+            {Object.entries(resumeData.contact).map(([key, value], index, array) => (
+              <>
+                <span class="header-contact-info-item">{value}</span>
+                {index < array.length - 1 && <span> • </span>}
+              </>
+            ))}
+          </div>
+        )}
+        
+        <div class="title-bar">
+          <div class="job-title">{resumeData.header.current_title}</div>
+          {resumeData.social && (
+          <div class="icon-links">
+            {Object.entries(resumeData.social).map(([platform, url]) => (
+              <a href={url} class="icon-link" target="_blank" rel="noopener noreferrer">
+                {platform === 'GitHub' && (
+                  <svg viewBox="0 0 16 16" width="20" height="20" fill="currentColor">
+                    <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"/>
+                  </svg>
+                )}
+                {platform === 'LinkedIn' && (
+                  <svg viewBox="0 0 16 16" width="20" height="20" fill="currentColor">
+                    <path d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854V1.146zm4.943 12.248V6.169H2.542v7.225h2.401zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248-.822 0-1.359.54-1.359 1.248 0 .694.521 1.248 1.327 1.248h.016zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016a5.54 5.54 0 0 1 .016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225h2.4z"/>
+                  </svg>
+                )}
+                {platform === 'Website' && (
+                  <svg viewBox="0 0 16 16" width="20" height="20" fill="currentColor">
+                    <path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm7.5-6.923c-.67.204-1.335.82-1.887 1.855A7.97 7.97 0 0 0 5.145 4H7.5V1.077zM4.09 4a9.267 9.267 0 0 1 .64-1.539 6.7 6.7 0 0 1 .597-.933A7.025 7.025 0 0 0 2.255 4H4.09zm-.582 3.5c.03-.877.138-1.718.312-2.5H1.674a6.958 6.958 0 0 0-.656 2.5h2.49zM4.847 5a12.5 12.5 0 0 0-.338 2.5H7.5V5H4.847zM8.5 5v2.5h2.99a12.495 12.495 0 0 0-.337-2.5H8.5zM4.51 8.5a12.5 12.5 0 0 0 .337 2.5H7.5V8.5H4.51zm3.99 0V11h2.653c.187-.765.306-1.608.338-2.5H8.5zM5.145 12c.138.386.295.744.468 1.068.552 1.035 1.218 1.65 1.887 1.855V12H5.145zm.182 2.472a6.696 6.696 0 0 1-.597-.933A9.268 9.268 0 0 1 4.09 12H2.255a7.024 7.024 0 0 0 3.072 2.472zM3.82 11a13.652 13.652 0 0 1-.312-2.5h-2.49c.062.89.291 1.733.656 2.5H3.82zm6.853 3.472A7.024 7.024 0 0 0 13.745 12H11.91a9.27 9.27 0 0 1-.64 1.539 6.688 6.688 0 0 1-.597.933zM8.5 12v2.923c.67-.204 1.335-.82 1.887-1.855.173-.324.33-.682.468-1.068H8.5zm3.68-1h2.146c.365-.767.594-1.61.656-2.5h-2.49a13.65 13.65 0 0 1-.312 2.5zm2.802-3.5a6.959 6.959 0 0 0-.656-2.5H12.18c.174.782.282 1.623.312 2.5h2.49zM11.27 2.461c.247.464.462.98.64 1.539h1.835a7.024 7.024 0 0 0-3.072-2.472c.218.284.418.598.597.933zM10.855 4a7.966 7.966 0 0 0-.468-1.068C9.835 1.897 9.17 1.282 8.5 1.077V4h2.355z"/>
+                  </svg>
+                )}
+                <span class="icon-text">{platform}</span>
+              </a>
+            ))}
+          </div>
+        )}
+        </div>
+        
+        <div class="executive-summary">
+          <p>{resumeData.header.intro}</p>
+        </div>
+        
+        {resumeData.contact.email && (
+          <div>
+            <a href={`mailto:${resumeData.contact.email}`} class="contact-button">
+              聯絡我
+            </a>
+          </div>
+        )}
+      </div>
+    </div>
+  </header>
+
+  <!-- Skills Section -->
+  {resumeData.sections.skills && (
+    <section class="content-section">
+      <header class="section-header">
+        <h2>技能</h2>
+      </header>
+      <div class="section-content">
+        {skills.map((skill, index) => (
+          <div class="resume-item">
+            <h4 class="resume-item-details">{skill.skill}</h4>
+            <div class="resume-item-copy">
+              {skill.description && (
+                <div class="skill-description">
+                  {skill.description}
+                </div>
+              )}
+              {skill.list && (
+                <div class="skill-list">
+                  {skill.list.map((item, index) => (
+                    <>
+                      <span>{item}</span>
+                      {index < skill.list.length - 1 && <span> • </span>}
+                    </>
+                  ))}
+                </div>
+              )}
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+  )}
+
+  <!-- Experience Section -->
+  {resumeData.sections.experience && (
+    <section class="content-section">
+      <header class="section-header">
+        <h2>經歷</h2>
+      </header>
+      <div class="section-content">
+        {experience.map((job, index) => (
+          <div class="resume-item">
+            {job.logo && (
+              <img src={job.logo} class="company-logo" alt={`${job.company} logo`} />
+            )}
+            
+            <h3 class="resume-item-title company-name">
+              {job.url ? (
+                <a href={job.url} target="_blank" rel="noopener noreferrer">{job.company}</a>
+              ) : (
+                job.company
+              )}
+            </h3>
+            
+            {job.summary && (
+              <div class="job-summary" set:html={job.summary.replace(/\n/g, '<br>')}>
+              </div>
+            )}
+            
+            {job.positions.map(position => (
+              <div class="resume-job-position">
+                <div class="position-title">
+                  <h4 class="resume-item-details">{position.title}</h4>
+                  <div class="position-duration">
+                    <span> • </span>
+                    <span>{formatDate(position.startdate)}</span>
+                    <span> – </span>
+                    <span>{position.enddate ? formatDate(position.enddate) : '現在'}</span>
+                    <span> • </span>
+                    <span>{calculateJobDuration(position.startdate, position.enddate)}</span>
+                  </div>
+                </div>
+                <div class="resume-item-copy">
+                  <div class="position-summary" set:html={position.summary.replace(/\n/g, '<br>')}></div>
+                  {position.projects && (
+                    <ul class="resume-item-list">
+                      {position.projects.map(project => (
+                        <li>{project}</li>
+                      ))}
+                    </ul>
+                  )}
+                </div>
+              </div>
+            ))}
+          </div>
+        ))}
+      </div>
+    </section>
+  )}
+
+  <!-- Education Section -->
+  {resumeData.sections.education && (
+    <section class="content-section">
+      <header class="section-header">
+        <h2>學歷</h2>
+      </header>
+      <div class="section-content">
+        {education.map((edu, index) => (
+          <div class="resume-item">
+            <h3 class="resume-item-title">{edu.uni}</h3>
+            <h4 class="resume-item-details group">{edu.degree} • {edu.year}</h4>
+            {edu.award && (
+              <h5 class="resume-item-details award-title">{edu.award}</h5>
+            )}
+            {edu.awards && (
+              <div class="resume-item-copy">
+                <ul class="resume-item-list">
+                  {edu.awards.map(award => (
+                    <li>{award.award}</li>
+                  ))}
+                </ul>
+              </div>
+            )}
+            <div class="resume-item-copy" set:html={edu.summary.replace(/\n/g, '<br>')}></div>
+          </div>
+        ))}
+      </div>
+    </section>
+  )}
+
+  <!-- Projects Section -->
+  {resumeData.sections.projects && (
+    <section class="content-section">
+      <header class="section-header">
+        <h2>專案</h2>
+      </header>
+      <div class="section-content">
+        {projects.map((project, index) => (
+          <div class="resume-item">
+            <h3 class="resume-item-title">
+              {project.url ? (
+                <a href={project.url} target="_blank" rel="noopener noreferrer">{project.project}</a>
+              ) : (
+                project.project
+              )}
+            </h3>
+            <h4 class="resume-item-details">{project.role} • {project.duration}</h4>
+            <div class="resume-item-copy" set:html={project.description.replace(/\n/g, '<br>')}></div>
+          </div>
+        ))}
+      </div>
+    </section>
+  )}
+
+  <!-- Interests Section -->
+  {resumeData.sections.interests && (
+    <section class="content-section">
+      <header class="section-header">
+        <h2>興趣</h2>
+      </header>
+      <div class="section-content">
+        <div class="resume-item">
+          <div class="resume-item-copy" set:html={interests.description.replace(/\n/g, '<br>')}></div>
+        </div>
+      </div>
+    </section>
+  )}
+
+  <!-- Recognition Section -->
+  {resumeData.sections.recognition && (
+    <section class="content-section">
+      <header class="section-header">
+        <h2>認證</h2>
+      </header>
+      <div class="section-content">
+        {recognitions.map((recognition, index) => (
+          <div class="resume-item">
+            <h3 class="resume-item-title">{recognition.award}</h3>
+            <h4 class="resume-item-details">{recognition.organization} • {recognition.year}</h4>
+          </div>
+        ))}
+      </div>
+    </section>
+  )}
+
+  <!-- Social Links Section -->
+  {resumeData.sections.social_links && (
+    <section class="content-section">
+      <header class="section-header">
+        <h2>社群</h2>
+      </header>
+      <div class="section-content">
+        <div class="resume-item">
+          <ul class="resume-item-list">
+            {links.map(link => (
+              <li>
+                <strong>{link.name}</strong>: 
+                <a href={link.url} target="_blank" rel="noopener noreferrer">{link.label}</a>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </section>
+  )}
+</div>
+
+<style>
+  .resume-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 3rem 2rem;
+    font-family: 'Open Sans', sans-serif;
+    line-height: 1.6;
+    color: var(--theme-text-primary);
+  }
+
+  .page-header {
+    text-align: center;
+    margin-bottom: 3rem;
+    padding-bottom: 2rem;
+    border-bottom: 2px solid var(--theme-border);
+  }
+
+  .header-main {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 3rem;
+    margin-bottom: 2rem;
+  }
+
+  .profile-photo {
+    flex-shrink: 0;
+    display: flex;
+    justify-content: center;
+  }
+
+  .profile-image {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 5px solid var(--theme-primary);
+    box-shadow: var(--theme-shadow-primary);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .profile-image:hover {
+    transform: scale(1.05);
+    box-shadow: var(--theme-shadow-lg);
+  }
+
+  .header-content {
+    flex: 1;
+    text-align: left;
+    max-width: 800px;
+  }
+
+  .header-title {
+    margin-bottom: 0.8rem;
+  }
+
+  .header-name {
+    font-size: 2.8rem;
+    font-weight: 700;
+    color: var(--theme-text-primary);
+    line-height: 1.2;
+  }
+
+  .header-suffix {
+    font-size: 1.6rem;
+    color: var(--theme-text-muted);
+    font-weight: 400;
+  }
+
+  .header-contact-info {
+    margin: 0.8rem 0;
+    font-size: 1rem;
+    color: var(--theme-text-muted);
+    line-height: 1.4;
+  }
+
+  .header-contact-info-item {
+    font-weight: 500;
+  }
+
+  .title-bar {
+    margin: 1.2rem 0;
+  }
+
+  .job-title {
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: var(--theme-text-secondary);
+    margin-bottom: 1.2rem;
+    padding: 0.5rem 0;
+    border-bottom: 2px solid var(--theme-border);
+  }
+
+  .icon-links {
+    display: flex;
+    justify-content: flex-start;
+    gap: 0.8rem;
+    flex-wrap: wrap;
+    margin-bottom: 1rem;
+  }
+
+  .icon-link {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.6rem 1.2rem;
+    background: var(--theme-gradient-primary);
+    color: var(--theme-text-inverse);
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: 500;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+    box-shadow: var(--theme-shadow-primary);
+    border: none;
+  }
+
+  .icon-link:hover {
+    background: var(--theme-primary-dark);
+    transform: translateY(-2px);
+    box-shadow: var(--theme-shadow-md);
+  }
+
+  .icon-link svg {
+    flex-shrink: 0;
+    width: 20px;
+    height: 20px;
+  }
+
+  .icon-text {
+    white-space: nowrap;
+  }
+
+  .executive-summary {
+    font-size: 1.1rem;
+    margin: 2rem 0;
+    padding: 2.5rem;
+    background: var(--theme-gradient-surface);
+    border-radius: 12px;
+    border-left: 5px solid var(--theme-primary);
+    box-shadow: var(--theme-shadow-sm);
+    line-height: 1.7;
+    max-width: none;
+  }
+
+  .contact-button {
+    display: inline-block;
+    padding: 0.8rem 2.2rem;
+    background: var(--theme-gradient-accent);
+    color: var(--theme-text-inverse);
+    text-decoration: none;
+    border-radius: 30px;
+    font-weight: 600;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    margin-top: 1.2rem;
+    box-shadow: var(--theme-shadow-accent);
+  }
+
+  .contact-button:hover {
+    background: var(--theme-accent-hover);
+    transform: translateY(-2px);
+    box-shadow: var(--theme-shadow-lg);
+  }
+
+  .content-section {
+    margin-bottom: 4rem;
+    padding: 0 2rem;
+  }
+
+  .section-header h2 {
+    font-size: 1.8rem;
+    color: var(--theme-text-primary);
+    border-bottom: 2px solid var(--theme-primary);
+    padding-bottom: 0.5rem;
+    margin-bottom: 2rem;
+  }
+
+  .resume-item {
+    margin-bottom: 3rem;
+    padding: 1.5rem 0 2.5rem 0;
+    border-bottom: 1px solid var(--theme-border-light);
+  }
+
+  .resume-item:last-child {
+    border-bottom: none;
+  }
+
+  .resume-item-title {
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: var(--theme-text-primary);
+    margin-bottom: 0.5rem;
+  }
+
+  .resume-item-details {
+    font-size: 1.1rem;
+    color: var(--theme-text-muted);
+    margin-bottom: 1rem;
+  }
+
+  .company-logo {
+    width:100px;
+    height: 100px;
+    object-fit: contain;
+    margin-bottom: 1rem;
+  }
+
+  .company-name a {
+    color: var(--theme-primary);
+    text-decoration: none;
+  }
+
+  .company-name a:hover {
+    text-decoration: underline;
+  }
+
+  .job-summary {
+    font-style: italic;
+    color: var(--theme-text-muted);
+    margin-bottom: 1rem;
+  }
+
+  .resume-job-position {
+    margin-bottom: 1.5rem;
+  }
+
+  .position-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-bottom: 0.5rem;
+  }
+
+  .position-duration {
+    font-size: 0.9rem;
+    color: var(--theme-text-muted);
+  }
+
+  .skill-description {
+    font-style: italic;
+    color: var(--theme-text-muted);
+    margin-bottom: 0.5rem;
+  }
+
+  .position-summary {
+    max-width: none;
+  }
+
+  .job-summary {
+    max-width: none;
+  }
+
+  .skill-description {
+    max-width: none;
+  }
+
+  .skill-list {
+    color: var(--theme-text-secondary);
+    max-width: none;
+  }
+
+  .resume-item-list {
+    list-style-type: disc;
+    margin-left: 1.5rem;
+  }
+
+  .resume-item-list li {
+    margin-bottom: 0.5rem;
+  }
+
+  .resume-item-copy {
+    color: var(--theme-text-secondary);
+    line-height: 1.7;
+    max-width: none;
+  }
+
+  @media (max-width: 1024px) {
+    .resume-container {
+      max-width: 900px;
+      padding: 2.5rem 1.5rem;
+    }
+    
+    .content-section {
+      margin-bottom: 3.5rem;
+      padding: 0 0.5rem;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .resume-container {
+      max-width: 100%;
+      padding: 2rem 1rem;
+    }
+    
+    .content-section {
+      margin-bottom: 3rem;
+      padding: 0;
+    }
+    
+    .resume-item {
+      margin-bottom: 2.5rem;
+      padding: 1rem 0 2rem 0;
+    }
+
+    .header-main {
+      flex-direction: column;
+      gap: 1.5rem;
+      align-items: center;
+    }
+
+    .header-content {
+      text-align: center;
+      max-width: none;
+    }
+
+    .profile-image {
+      width: 120px;
+      height: 120px;
+    }
+
+    .header-name {
+      font-size: 2.2rem;
+    }
+
+    .header-suffix {
+      font-size: 1.4rem;
+    }
+
+    .job-title {
+      font-size: 1.2rem;
+      text-align: center;
+    }
+
+    .icon-links {
+      justify-content: center;
+      gap: 0.6rem;
+    }
+
+    .executive-summary {
+      padding: 1.2rem;
+      margin: 1rem 0;
+    }
+
+    .position-title {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  }
+</style>

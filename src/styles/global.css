@@ -4,6 +4,7 @@
   License MIT: https://github.com/HermanMartinus/bearblog/blob/master/LICENSE.md
  */
 
+/* 保留原有變數以向後兼容，但優先使用主題變數 */
 :root {
   --accent: #2337ff;
   --accent-dark: #000d8a;
@@ -35,19 +36,24 @@ body {
   margin: 0;
   padding: 0;
   text-align: left;
-  background: linear-gradient(var(--gray-gradient)) no-repeat;
-  background-size: 100% 600px;
+  background: var(--theme-bg);
   word-wrap: break-word;
   overflow-wrap: break-word;
-  color: rgb(var(--gray-dark));
+  color: var(--theme-text-secondary);
   font-size: 20px;
   line-height: 1.7;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 main {
   width: 720px;
   max-width: calc(100% - 2em);
   margin: auto;
   padding: 3em 1em;
+  background: var(--theme-surface);
+  border-radius: 12px;
+  box-shadow: var(--theme-shadow-sm);
+  margin-top: 2em;
+  margin-bottom: 2em;
 }
 h1,
 h2,
@@ -56,7 +62,7 @@ h4,
 h5,
 h6 {
   margin: 0 0 0.5rem 0;
-  color: rgb(var(--black));
+  color: var(--theme-text-primary);
   line-height: 1.2;
 }
 h1 {
@@ -79,10 +85,11 @@ b {
   font-weight: 700;
 }
 a {
-  color: var(--accent);
+  color: var(--theme-primary);
+  transition: color 0.3s ease;
 }
 a:hover {
-  color: var(--accent);
+  color: var(--theme-primary-hover);
 }
 p {
   margin-bottom: 1em;
@@ -105,27 +112,116 @@ img {
   height: auto;
   border-radius: 8px;
 }
+
+/* 為文章內容中的圖片添加白色背景，確保透明背景圖片在深色模式下可讀 */
+.prose img {
+  background-color: #ffffff;
+  padding: var(--spacing-xs, 0.25rem);
+  box-shadow: var(--theme-shadow-sm, 0 1px 2px 0 rgba(0, 0, 0, 0.05));
+}
 code {
   padding: 2px 5px;
-  background-color: rgb(var(--gray-light));
+  background-color: var(--theme-bg-secondary);
+  color: var(--theme-text-primary);
   border-radius: 2px;
+  border: 1px solid var(--theme-border);
 }
 pre {
   padding: 1.5em;
   border-radius: 8px;
+  background-color: var(--theme-bg-secondary);
+  border: 1px solid var(--theme-border);
+  overflow-x: auto;
+  position: relative;
 }
 pre > code {
   all: unset;
 }
+
+/* 程式碼複製按鈕樣式 */
+.code-copy-container {
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+  z-index: 10;
+}
+
+.code-copy-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 0.75rem;
+  background-color: var(--theme-surface);
+  border: 1px solid var(--theme-border);
+  border-radius: 6px;
+  color: var(--theme-text-secondary);
+  font-size: 0.875rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: var(--theme-shadow-sm);
+}
+
+.code-copy-btn:hover {
+  background-color: var(--theme-bg-secondary);
+  color: var(--theme-text-primary);
+  border-color: var(--theme-primary);
+  transform: translateY(-1px);
+  box-shadow: var(--theme-shadow-md);
+}
+
+.code-copy-btn:active {
+  transform: translateY(0);
+}
+
+.code-copy-btn.copied {
+  background-color: var(--theme-primary);
+  color: white;
+  border-color: var(--theme-primary);
+}
+
+.code-copy-btn.error {
+  background-color: #ef4444;
+  color: white;
+  border-color: #ef4444;
+}
+
+.code-copy-btn svg {
+  flex-shrink: 0;
+}
+
+.copy-text {
+  white-space: nowrap;
+}
+
+/* 響應式設計 */
+@media (max-width: 640px) {
+  .code-copy-btn {
+    padding: 0.375rem 0.5rem;
+    font-size: 0.75rem;
+  }
+  
+  .code-copy-btn svg {
+    width: 14px;
+    height: 14px;
+  }
+  
+  .copy-text {
+    display: none;
+  }
+}
 blockquote {
-  border-left: 4px solid var(--accent);
+  border-left: 4px solid var(--theme-primary);
   padding: 0 0 0 20px;
   margin: 0px;
   font-size: 1.333em;
+  background-color: var(--theme-bg-secondary);
+  padding: 1em 0 1em 20px;
+  border-radius: 0 8px 8px 0;
+  color: var(--theme-text-secondary);
 }
 hr {
   border: none;
-  border-top: 1px solid rgb(var(--gray-light));
+  border-top: 1px solid var(--theme-divider);
 }
 @media (max-width: 720px) {
   body {

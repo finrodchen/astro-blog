@@ -1,0 +1,41 @@
+---
+import FormattedDate from './FormattedDate.astro';
+import type { CollectionEntry } from 'astro:content';
+
+interface Props {
+  posts: CollectionEntry<'blog' | 'coding' | 'biotechnology' | 'celltherapy'>[];
+  category: 'blog' | 'coding' | 'biotechnology' | 'celltherapy';
+}
+
+const { posts, category } = Astro.props;
+---
+
+<section class="content-animate">
+  <ul class="post-list">
+    {
+      posts.map((post, index) => (
+        <li class="post-card card-animate hover-lift" style={`animation-delay: ${index * 0.1}s`}>
+          <a href={`/${category}/${post.id}/`} class="post-link">
+            <img 
+              width={720} 
+              height={405} 
+              src={post.data.heroImage} 
+              alt={post.data.title || ''}
+              class="post-image image-fade-in"
+              loading="lazy"
+              onload="this.classList.add('loaded')"
+            />
+            <h4 class="post-title">{post.data.title}</h4>
+            <p class="post-date">
+              <FormattedDate date={post.data.pubDate} />
+            </p>
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+</section>
+
+<style>
+  @import '../styles/post-list.css';
+</style>

@@ -1,0 +1,165 @@
+/* 主題系統 - CSS 變數定義 */
+
+/* 預設主題（淺色模式） */
+:root {
+  /* 主要顏色 */
+  --theme-bg: #ffffff;
+  --theme-bg-rgb: 255, 255, 255;
+  --theme-bg-secondary: #f8f9fa;
+  --theme-bg-tertiary: #ecf0f1;
+  --theme-surface: #ffffff;
+  --theme-surface-elevated: #ffffff;
+  
+  /* 文字顏色 */
+  --theme-text-primary: #2c3e50;
+  --theme-text-secondary: #34495e;
+  --theme-text-muted: #7f8c8d;
+  --theme-text-inverse: #ffffff;
+  
+  /* 邊框和分隔線 */
+  --theme-border: #ecf0f1;
+  --theme-border-light: #f8f9fa;
+  --theme-divider: #eee;
+  
+  /* 品牌色彩 */
+  --theme-primary: #3498db;
+  --theme-primary-rgb: 52, 152, 219;
+  --theme-primary-hover: #2980b9;
+  --theme-primary-dark: #1f5f8b;
+  --theme-accent: #e74c3c;
+  --theme-accent-hover: #c0392b;
+  
+  /* 陰影 */
+  --theme-shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.05);
+  --theme-shadow-md: 0 4px 12px rgba(0, 0, 0, 0.1);
+  --theme-shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.15);
+  --theme-shadow-primary: 0 2px 8px rgba(52, 152, 219, 0.2);
+  --theme-shadow-accent: 0 4px 12px rgba(231, 76, 60, 0.3);
+  
+  /* 狀態顏色 */
+  --theme-success: #27ae60;
+  --theme-warning: #f39c12;
+  --theme-error: #e74c3c;
+  --theme-info: #3498db;
+  
+  /* 漸變 */
+  --theme-gradient-primary: linear-gradient(135deg, #3498db, #2980b9);
+  --theme-gradient-accent: linear-gradient(135deg, #e74c3c, #c0392b);
+  --theme-gradient-surface: linear-gradient(135deg, #f8f9fa, #ffffff);
+}
+
+/* 深色主題 */
+[data-theme="dark"] {
+  /* 主要顏色 */
+  --theme-bg: #1a1a1a;
+  --theme-bg-rgb: 26, 26, 26;
+  --theme-bg-secondary: #2d2d2d;
+  --theme-bg-tertiary: #3a3a3a;
+  --theme-surface: #2d2d2d;
+  --theme-surface-elevated: #3a3a3a;
+  
+  /* 文字顏色 */
+  --theme-text-primary: #ffffff;
+  --theme-text-secondary: #e0e0e0;
+  --theme-text-muted: #a0a0a0;
+  --theme-text-inverse: #1a1a1a;
+  
+  /* 邊框和分隔線 */
+  --theme-border: #404040;
+  --theme-border-light: #4a4a4a;
+  --theme-divider: #404040;
+  
+  /* 品牌色彩（稍微調整以適應深色背景） */
+  --theme-primary: #4aa3df;
+  --theme-primary-rgb: 74, 163, 223;
+  --theme-primary-hover: #3498db;
+  --theme-primary-dark: #2980b9;
+  --theme-accent: #ff6b5b;
+  --theme-accent-hover: #e74c3c;
+  
+  /* 陰影（深色模式下使用更深的陰影） */
+  --theme-shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.3);
+  --theme-shadow-md: 0 4px 12px rgba(0, 0, 0, 0.4);
+  --theme-shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.5);
+  --theme-shadow-primary: 0 2px 8px rgba(74, 163, 223, 0.3);
+  --theme-shadow-accent: 0 4px 12px rgba(255, 107, 91, 0.3);
+  
+  /* 狀態顏色（深色模式調整） */
+  --theme-success: #2ecc71;
+  --theme-warning: #f1c40f;
+  --theme-error: #ff6b5b;
+  --theme-info: #4aa3df;
+  
+  /* 漸變 */
+  --theme-gradient-primary: linear-gradient(135deg, #4aa3df, #3498db);
+  --theme-gradient-accent: linear-gradient(135deg, #ff6b5b, #e74c3c);
+  --theme-gradient-surface: linear-gradient(135deg, #2d2d2d, #3a3a3a);
+}
+
+/* 主題過渡動畫 */
+* {
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* 系統偏好設定支援 */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme]) {
+    /* 主要顏色 */
+    --theme-bg: #1a1a1a;
+    --theme-bg-rgb: 26, 26, 26;
+    --theme-bg-secondary: #2d2d2d;
+    --theme-bg-tertiary: #3a3a3a;
+    --theme-surface: #2d2d2d;
+    --theme-surface-elevated: #3a3a3a;
+    
+    /* 文字顏色 */
+    --theme-text-primary: #ffffff;
+    --theme-text-secondary: #e0e0e0;
+    --theme-text-muted: #a0a0a0;
+    --theme-text-inverse: #1a1a1a;
+    
+    /* 邊框和分隔線 */
+    --theme-border: #404040;
+    --theme-border-light: #4a4a4a;
+    --theme-divider: #404040;
+    
+    /* 品牌色彩 */
+    --theme-primary: #4aa3df;
+    --theme-primary-rgb: 74, 163, 223;
+    --theme-primary-hover: #3498db;
+    --theme-primary-dark: #2980b9;
+    --theme-accent: #ff6b5b;
+    --theme-accent-hover: #e74c3c;
+    
+    /* 陰影 */
+    --theme-shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.3);
+    --theme-shadow-md: 0 4px 12px rgba(0, 0, 0, 0.4);
+    --theme-shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.5);
+    --theme-shadow-primary: 0 2px 8px rgba(74, 163, 223, 0.3);
+    --theme-shadow-accent: 0 4px 12px rgba(255, 107, 91, 0.3);
+    
+    /* 狀態顏色 */
+    --theme-success: #2ecc71;
+    --theme-warning: #f1c40f;
+    --theme-error: #ff6b5b;
+    --theme-info: #4aa3df;
+    
+    /* 漸變 */
+    --theme-gradient-primary: linear-gradient(135deg, #4aa3df, #3498db);
+    --theme-gradient-accent: linear-gradient(135deg, #ff6b5b, #e74c3c);
+    --theme-gradient-surface: linear-gradient(135deg, #2d2d2d, #3a3a3a);
+  }
+}
+
+/* 高對比度模式支援 */
+@media (prefers-contrast: high) {
+  :root {
+    --theme-border: #000000;
+    --theme-text-primary: #000000;
+  }
+  
+  [data-theme="dark"] {
+    --theme-border: #ffffff;
+    --theme-text-primary: #ffffff;
+  }
+}
