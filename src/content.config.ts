@@ -15,8 +15,8 @@ const blog = defineCollection({
   }),
 });
 
-const bioindustry = defineCollection({
-  loader: glob({ base: "./src/content/bioindustry", pattern: "**/*.{md,mdx}" }),
+const biotechnology = defineCollection({
+  loader: glob({ base: "./src/content/biotechnology", pattern: "**/*.{md,mdx}" }),
   schema: z.object({
     title: z.string(),
     description: z.string().optional(),
@@ -75,8 +75,8 @@ const medical = defineCollection({
   }),
 });
 
-const python = defineCollection({
-  loader: glob({ base: "./src/content/python", pattern: "**/*.{md,mdx}" }),
+const coding = defineCollection({
+  loader: glob({ base: "./src/content/coding", pattern: "**/*.{md,mdx}" }),
   schema: z.object({
     title: z.string(),
     description: z.string().optional(),
@@ -101,11 +101,11 @@ const work = defineCollection({
 
 export const collections = { 
   blog, 
-  bioindustry, 
+  biotechnology, 
   celltherapy, 
   finance, 
   markdown, 
   medical, 
-  python, 
+  coding,
   work 
 };
