@@ -1,0 +1,146 @@
+---
+// Back to Top 懸浮按鈕組件
+---
+
+<button id="back-to-top" class="back-to-top" aria-label="回到頂部">
+  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M12 19V5M5 12L12 5L19 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  </svg>
+</button>
+
+<style>
+  .back-to-top {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    width: 3rem;
+    height: 3rem;
+    background: var(--theme-primary);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: var(--theme-shadow-lg);
+    transition: all 0.3s ease;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(20px);
+    z-index: 1000;
+  }
+
+  .back-to-top.visible {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+
+  .back-to-top:hover {
+    background: var(--theme-primary-hover, var(--theme-primary));
+    transform: translateY(-2px);
+    box-shadow: var(--theme-shadow-xl);
+  }
+
+  .back-to-top:active {
+    transform: translateY(0);
+  }
+
+  .back-to-top svg {
+    transition: transform 0.2s ease;
+  }
+
+  .back-to-top:hover svg {
+    transform: translateY(-1px);
+  }
+
+  /* 響應式設計 */
+  @media (max-width: 768px) {
+    .back-to-top {
+      bottom: 1.5rem;
+      right: 1.5rem;
+      width: 2.5rem;
+      height: 2.5rem;
+    }
+
+    .back-to-top svg {
+      width: 20px;
+      height: 20px;
+    }
+  }
+
+  /* 深色模式適配 */
+  @media (prefers-color-scheme: dark) {
+    .back-to-top {
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    }
+  }
+</style>
+
+<script>
+  function initBackToTop() {
+    const backToTopButton = document.getElementById('back-to-top');
+    
+    if (!backToTopButton) {
+      return;
+    }
+
+    // 滾動檢測
+    function handleScroll() {
+      const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+      const showThreshold = 300; // 滾動超過 300px 時顯示按鈕
+      
+      if (scrollTop > showThreshold) {
+        backToTopButton.classList.add('visible');
+      } else {
+        backToTopButton.classList.remove('visible');
+      }
+    }
+
+    // 回到頂部功能
+    function scrollToTop() {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    }
+
+    // 節流函數
+    function throttle(func, limit) {
+      let inThrottle;
+      return function() {
+        const args = arguments;
+        const context = this;
+        if (!inThrottle) {
+          func.apply(context, args);
+          inThrottle = true;
+          setTimeout(() => inThrottle = false, limit);
+        }
+      }
+    }
+
+    // 綁定事件
+    const throttledHandleScroll = throttle(handleScroll, 100);
+    window.addEventListener('scroll', throttledHandleScroll, { passive: true });
+    backToTopButton.addEventListener('click', scrollToTop);
+
+    // 初始檢查
+    handleScroll();
+  }
+
+  // 多種方式確保腳本執行
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initBackToTop);
+  } else {
+    initBackToTop();
+  }
+  
+  // 備用方案
+  window.addEventListener('load', function() {
+    setTimeout(initBackToTop, 100);
+  });
+  
+  // Astro 頁面切換後重新初始化
+  document.addEventListener('astro:page-load', initBackToTop);
+</script>

@@ -6,8 +6,6 @@ pubDate: 2022-06-30
 heroImage: https://i.imgur.com/HTtT4rr.png
 ---
 
-![Figma](https://i.imgur.com/HTtT4rr.png)
-
 Figma是近年很紅的App/網頁版型製作工具，方便易用又有線上協作功能讓它瞬間變成超熱門的UI/UX設計師首選。
 
 前幾天看了PAPAYA大神的Figma教學影片也把blog簡單做了一個App版型，真的滿有趣的。

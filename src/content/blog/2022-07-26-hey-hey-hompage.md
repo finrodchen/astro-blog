@@ -8,8 +8,6 @@ heroImage: https://i.imgur.com/V1evyRp.png
 
 今天在Product Hunt上發現一個可愛的小工具「Hey Hey」，功能很單純。
 
-![HeyHeyLogo](https://i.imgur.com/V1evyRp.png)
-
 可以用來作為個人的名片使用，先上[成果](https://heyhey.to/finrodchen)。
 
 ## 使用方法超簡單
