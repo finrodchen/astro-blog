@@ -6,6 +6,13 @@ import { SITE_TITLE } from '../consts';
 
 <header>
 	<nav>
+		<div class="mobile-menu-toggle">
+			<button class="hamburger" aria-label="開啟選單" aria-expanded="false">
+				<span></span>
+				<span></span>
+				<span></span>
+			</button>
+		</div>
 		<div class="logo-container">
 			<a href="/" class="logo-link">
 				<img 
@@ -18,19 +25,106 @@ import { SITE_TITLE } from '../consts';
 			</a>
 		</div>
 		<div class="internal-links">
-			<HeaderLink href="/" class="nav-item">首頁</HeaderLink>
-			<HeaderLink href="/blog" class="nav-item">雜談</HeaderLink>
-			<HeaderLink href="/biotechnology" class="nav-item">生物科技</HeaderLink>
-			<HeaderLink href="/celltherapy" class="nav-item">細胞治療</HeaderLink>
-			<HeaderLink href="/coding" class="nav-item">程式開發</HeaderLink>
-			<HeaderLink href="/articles" class="nav-item">文章存檔</HeaderLink>
-			<HeaderLink href="/about" class="nav-item">關於我</HeaderLink>
+			<HeaderLink href="/" class="nav-item">
+				<svg class="nav-icon" viewBox="0 0 24 24" fill="currentColor" width="20" height="20">
+					<path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/>
+				</svg>
+				首頁
+			</HeaderLink>
+			<HeaderLink href="/blog" class="nav-item">
+				<svg class="nav-icon" viewBox="0 0 24 24" fill="currentColor" width="20" height="20">
+					<path d="M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M18,20H6V4H13V9H18V20Z"/>
+				</svg>
+				雜談
+			</HeaderLink>
+			<HeaderLink href="/biotechnology" class="nav-item">
+				<svg class="nav-icon" viewBox="0 0 24 24" fill="currentColor" width="20" height="20">
+					<path d="M13,13C11,13 7,15 7,18V22H17V18C17,15 13,13 13,13M12,12A4,4 0 0,0 16,8A4,4 0 0,0 12,4A4,4 0 0,0 8,8A4,4 0 0,0 12,12M12,2C13.1,2 14,2.9 14,4C14,5.1 13.1,6 12,6C10.9,6 10,5.1 10,4C10,2.9 10.9,2 12,2Z"/>
+				</svg>
+				生物科技
+			</HeaderLink>
+			<HeaderLink href="/celltherapy" class="nav-item">
+				<svg class="nav-icon" viewBox="0 0 24 24" fill="currentColor" width="20" height="20">
+					<path d="M12,2A10,10 0 0,1 22,12A10,10 0 0,1 12,22A10,10 0 0,1 2,12A10,10 0 0,1 12,2M12,4A8,8 0 0,0 4,12A8,8 0 0,0 12,20A8,8 0 0,0 20,12A8,8 0 0,0 12,4M12,6A6,6 0 0,1 18,12A6,6 0 0,1 12,18A6,6 0 0,1 6,12A6,6 0 0,1 12,6M12,8A4,4 0 0,0 8,12A4,4 0 0,0 12,16A4,4 0 0,0 16,12A4,4 0 0,0 12,8Z"/>
+				</svg>
+				細胞治療
+			</HeaderLink>
+			<HeaderLink href="/coding" class="nav-item">
+				<svg class="nav-icon" viewBox="0 0 24 24" fill="currentColor" width="20" height="20">
+					<path d="M8,3A2,2 0 0,0 6,5V9A2,2 0 0,1 4,11H3V13H4A2,2 0 0,1 6,15V19A2,2 0 0,0 8,21H10V19H8V14A2,2 0 0,0 6,12A2,2 0 0,0 8,10V5H10V3M16,3A2,2 0 0,1 18,5V9A2,2 0 0,0 20,11H21V13H20A2,2 0 0,0 18,15V19A2,2 0 0,1 16,21H14V19H16V14A2,2 0 0,1 18,12A2,2 0 0,1 16,10V5H14V3H16Z"/>
+				</svg>
+				程式開發
+			</HeaderLink>
+			<HeaderLink href="/articles" class="nav-item">
+				<svg class="nav-icon" viewBox="0 0 24 24" fill="currentColor" width="20" height="20">
+					<path d="M19,3H5C3.89,3 3,3.89 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V5C21,3.89 20.1,3 19,3M19,19H5V5H19V19Z"/>
+				</svg>
+				文章存檔
+			</HeaderLink>
+			<HeaderLink href="/about" class="nav-item">
+				<svg class="nav-icon" viewBox="0 0 24 24" fill="currentColor" width="20" height="20">
+					<path d="M12,4A4,4 0 0,1 16,8A4,4 0 0,1 12,12A4,4 0 0,1 8,8A4,4 0 0,1 12,4M12,14C16.42,14 20,15.79 20,18V20H4V18C4,15.79 7.58,14 12,14Z"/>
+				</svg>
+				關於我
+			</HeaderLink>
 		</div>
 		<div class="header-actions">
 			<ThemeToggle />
 		</div>
 	</nav>
+	<div class="mobile-overlay"></div>
 </header>
+
+<script>
+	function initMobileMenu() {
+		const hamburger = document.querySelector('.hamburger');
+		const nav = document.querySelector('nav');
+		const overlay = document.querySelector('.mobile-overlay');
+		const internalLinks = document.querySelector('.internal-links');
+
+		if (!hamburger || !nav || !overlay || !internalLinks) return;
+
+		function toggleMenu() {
+			const isOpen = nav.classList.contains('mobile-open');
+			
+			if (isOpen) {
+				nav.classList.remove('mobile-open');
+				overlay.classList.remove('active');
+				hamburger.setAttribute('aria-expanded', 'false');
+				document.body.style.overflow = '';
+			} else {
+				nav.classList.add('mobile-open');
+				overlay.classList.add('active');
+				hamburger.setAttribute('aria-expanded', 'true');
+				document.body.style.overflow = 'hidden';
+			}
+		}
+
+		hamburger.addEventListener('click', toggleMenu);
+		overlay.addEventListener('click', toggleMenu);
+
+		// 點擊導航連結時關閉選單
+		internalLinks.addEventListener('click', (e) => {
+			if (e.target.tagName === 'A') {
+				toggleMenu();
+			}
+		});
+
+		// ESC 鍵關閉選單
+		document.addEventListener('keydown', (e) => {
+			if (e.key === 'Escape' && nav.classList.contains('mobile-open')) {
+				toggleMenu();
+			}
+		});
+	}
+
+	// 初始化
+	if (document.readyState === 'loading') {
+		document.addEventListener('DOMContentLoaded', initMobileMenu);
+	} else {
+		initMobileMenu();
+	}
+</script>
 <style>
 	header {
 		position: sticky;
@@ -38,11 +132,79 @@ import { SITE_TITLE } from '../consts';
 		z-index: 100;
 		margin: 0;
 		padding: 0 1em;
+		min-height: 60px;
 		background: rgba(var(--theme-bg-rgb), 0.95);
 		border-bottom: 1px solid var(--theme-border);
 		box-shadow: var(--theme-shadow-sm);
 		backdrop-filter: blur(10px);
 		-webkit-backdrop-filter: blur(10px);
+	}
+	
+	.mobile-menu-toggle {
+		display: none !important;
+	}
+
+	@media (min-width: 1025px) {
+		.mobile-menu-toggle {
+			display: none !important;
+		}
+	}
+
+	.hamburger {
+		background: none;
+		border: none;
+		cursor: pointer;
+		padding: 0.5rem;
+		display: flex;
+		flex-direction: column;
+		justify-content: space-around;
+		width: 2rem;
+		height: 2rem;
+		transition: transform 0.3s ease;
+	}
+
+	.hamburger span {
+		display: block;
+		height: 2px;
+		width: 100%;
+		background: var(--theme-text-primary);
+		border-radius: 1px;
+		transition: all 0.3s ease;
+		transform-origin: center;
+	}
+
+	.hamburger:hover {
+		transform: scale(1.1);
+	}
+
+	.mobile-open .hamburger span:nth-child(1) {
+		transform: rotate(45deg) translate(5px, 5px);
+	}
+
+	.mobile-open .hamburger span:nth-child(2) {
+		opacity: 0;
+	}
+
+	.mobile-open .hamburger span:nth-child(3) {
+		transform: rotate(-45deg) translate(7px, -6px);
+	}
+
+	.mobile-overlay {
+		position: fixed;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		background: rgba(0, 0, 0, 0.5);
+		z-index: 99;
+		opacity: 0;
+		visibility: hidden;
+		transition: opacity 0.3s ease, visibility 0.3s ease;
+	}
+
+	.mobile-overlay.active {
+		opacity: 1;
+		visibility: visible;
 	}
 	
 	.logo-container {
@@ -89,6 +251,31 @@ import { SITE_TITLE } from '../consts';
 		display: flex;
 		align-items: center;
 		justify-content: space-between;
+		position: relative;
+	}
+
+	.internal-links {
+		display: flex;
+		align-items: center;
+		gap: 0.5rem;
+	}
+
+	.internal-links a {
+		display: flex;
+		align-items: center;
+		gap: 0.5rem;
+	}
+
+	.nav-icon {
+		flex-shrink: 0;
+		color: var(--theme-text-secondary);
+		transition: color 0.3s ease;
+	}
+
+	@media (min-width: 1025px) {
+		.nav-icon {
+			display: none;
+		}
 	}
 	
 	nav a {
@@ -114,7 +301,95 @@ import { SITE_TITLE } from '../consts';
 		align-items: center;
 	}
 	
-	@media (max-width: 720px) {
+	@media (max-width: 1024px) {
+		header {
+			min-height: 70px;
+			padding: 0.5em 1em;
+		}
+
+		.mobile-menu-toggle {
+			display: flex !important;
+			align-items: center;
+			justify-content: center;
+		}
+
+		nav {
+			justify-content: space-between;
+			position: relative;
+			height: 100%;
+			align-items: center;
+		}
+
+		.logo-container {
+			flex: 1;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+		}
+
+		.internal-links {
+			position: fixed;
+			top: 0;
+			left: -100%;
+			width: 280px;
+			height: 100vh;
+			background: var(--theme-bg);
+			border-right: 1px solid var(--theme-border);
+			box-shadow: var(--theme-shadow-lg);
+			transition: left 0.3s ease;
+			z-index: 101;
+			flex-direction: column;
+			align-items: stretch;
+			padding: 4rem 0 2rem 0;
+			gap: 0;
+			overflow-y: auto;
+		}
+
+		.mobile-open .internal-links {
+			left: 0;
+		}
+
+		.internal-links a {
+			padding: 1rem 1.5rem;
+			border-bottom: 1px solid var(--theme-border);
+			border-left: 4px solid transparent;
+			transition: all 0.3s ease;
+			font-size: 1rem;
+			display: flex;
+			align-items: center;
+			gap: 0.75rem;
+		}
+
+		.nav-icon {
+			flex-shrink: 0;
+			color: var(--theme-text-secondary);
+			transition: color 0.3s ease;
+		}
+
+		.internal-links a:hover {
+			background: var(--theme-bg-secondary);
+			border-left-color: var(--theme-primary);
+		}
+
+		.internal-links a:hover .nav-icon {
+			color: var(--theme-primary);
+		}
+
+		.internal-links a.active {
+			background: var(--theme-bg-secondary);
+			border-left-color: var(--theme-primary);
+			border-bottom-color: var(--theme-border);
+		}
+
+		.internal-links a.active .nav-icon {
+			color: var(--theme-primary);
+		}
+
+		.header-actions {
+			position: absolute;
+			right: 0;
+		}
+
 		.site-title {
 			display: none;
 		}
@@ -128,14 +403,18 @@ import { SITE_TITLE } from '../consts';
 		header {
 			padding: 0 0.5em;
 		}
-		
-		nav a {
-			padding: 0.8em 0.3em;
-			font-size: 0.9em;
-		}
 
 		.site-logo {
 			height: 32px;
+		}
+
+		.internal-links {
+			width: 250px;
+		}
+
+		.internal-links a {
+			padding: 0.875rem 1rem;
+			font-size: 0.9rem;
 		}
 	}
 </style>
