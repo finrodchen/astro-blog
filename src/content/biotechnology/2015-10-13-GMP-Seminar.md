@@ -1,5 +1,5 @@
 ---
-title: 2015/10/13新興生醫產品GMP研習會
+title: 新興生醫產品GMP研習會
 description: 新興生醫產品GMP研習會筆記，涵蓋21世紀GMP生物藥廠建構要點、台灣現行法規、細胞治療產品製程管控等重要內容。
 tags: bioindustry
 pubDate: 2015-10-13

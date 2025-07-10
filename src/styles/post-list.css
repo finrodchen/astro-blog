@@ -45,7 +45,7 @@
   border-radius: var(--post-card-border-radius);
   width: 100%;
   height: 200px;
-  object-fit: cover;
+  object-fit: contain;
   aspect-ratio: var(--post-image-aspect-ratio);
   transition: var(--transition-normal);
   box-shadow: var(--shadow-sm);

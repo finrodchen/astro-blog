@@ -158,7 +158,7 @@ export const projects: Project[] = [
     project: "特管辦法細胞治療計畫執行",
     role: "專案經理、品質計畫負責人代理人",
     duration: "2019年02月 — 至今",
-    description: "目前8個案件營運中，服務超過170位病患，放行細胞產品超過600劑次(2024年01月)\n1. 審核產品報告，確認記錄完整正確，相關技術性標準作業程序之制定及審查、協助內部PD/CA流程執行\n2. 醫療機構聯繫窗口，安排治療排程，控管計畫成本及治療成效與不良事件追蹤\n3. 收集病患治療資料，彙整年度報告，統計產品品質數據及醫療數據"
+    description: "目前12個案件營運中，服務超過220位病患，放行細胞產品超過800劑次(2025年01月)\n1. 審核產品報告，確認記錄完整正確，相關技術性標準作業程序之制定及審查、協助內部PD/CA流程執行\n2. 醫療機構聯繫窗口，安排治療排程，控管計畫成本及治療成效與不良事件追蹤\n3. 收集病患治療資料，彙整年度報告，統計產品品質數據及醫療數據"
   }
 ];
 
@@ -167,26 +167,7 @@ export const interests: Interests = {
 };
 
 export const links: ExternalLink[] = [
-  {
-    name: "LinkedIn",
-    url: "https://linkedin.com/in/finrodchen",
-    label: "finrodchen"
-  },
-  {
-    name: "Blog",
-    url: "https://blog.finrod.xyz",
-    label: "finrodchen"
-  },
-  {
-    name: "GitHub",
-    url: "https://github.com/finrodchen",
-    label: "finrodchen"
-  },
-  {
-    name: "Microsoft Learn",
-    url: "https://learn.microsoft.com/zh-tw/users/finrodchen-7401/transcript/d5e8nbrp1zkr81q",
-    label: "finrodchen"
-  }
+
 ];
 
 export const recognitions: Recognition[] = [

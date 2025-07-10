@@ -1,0 +1,55 @@
+---
+import BaseHead from '../components/BaseHead.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import BackToTop from '../components/BackToTop.astro';
+
+interface Props {
+	title: string;
+	description: string;
+}
+
+const { title, description } = Astro.props;
+---
+
+<html lang="en">
+	<head>
+		<BaseHead title={title} description={description} />
+		<style>
+			main {
+				width: calc(100% - 2em);
+				max-width: 100%;
+				margin: 0;
+			}
+			.prose {
+				width: 720px;
+				max-width: calc(100% - 2em);
+				margin: auto;
+				padding: 1em;
+				color: var(--theme-text-primary);
+			}
+			
+			/* 響應式設計 */
+			@media (max-width: 720px) {
+				.prose {
+					padding: 0.5em;
+				}
+			}
+		</style>
+	</head>
+
+	<body>
+		<Header />
+		<main class="page-enter">
+			<article class="content-animate">
+				<div class="prose">
+					<div class="content-animate">
+						<slot />
+					</div>
+				</div>
+			</article>
+		</main>
+		<Footer />
+		<BackToTop />
+	</body>
+</html>

@@ -20,10 +20,10 @@ const combinedPosts = [
 	...allCelltherapyPosts.map(post => ({ ...post, category: 'celltherapy' }))
 ];
 
-// 按發布日期排序並取前6篇
+// 按發布日期排序並取前9篇
 const recentPosts = combinedPosts
 	.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
-	.slice(0, 6);
+	.slice(0, 9);
 ---
 
 <!doctype html>
@@ -35,8 +35,8 @@ const recentPosts = combinedPosts
 		<Header />
 		<main class="page-enter">
 			<section class="hero-section">
-				<h4 class="content-animate" align="left">
-				Thoughts and Ideas.
+				<h4 class="content-animate" align="center">
+				Findings and Ideas.
 				</h4>
 				<div class="hero-images">
 					<img src="https://img.finrod.xyz/2025/07/72587f0a41a5a93ba1b56cfbaacbfb13.png" alt="Hero Image 1" class="hero-image-1 content-animate" loading="lazy" />
@@ -80,7 +80,7 @@ const recentPosts = combinedPosts
 		display: flex;
 		gap: 1rem;
 		margin: 2rem 0;
-		justify-content: left;
+		justify-content: center;
 		flex-wrap: wrap;
 	}
 
@@ -114,7 +114,7 @@ const recentPosts = combinedPosts
 	}
 
 	.recent-posts-section h2 {
-		text-align: left;
+		text-align: center;
 		margin-bottom: 2rem;
 		color: var(--theme-text-primary);
 		font-size: 2rem;
@@ -152,7 +152,7 @@ const recentPosts = combinedPosts
 	.recent-post-image {
 		width: 100%;
 		height: 200px;
-		object-fit: cover;
+		object-fit: contain;
 		background-color: #ffffff;
 		padding: var(--spacing-xs, 0.25rem);
 	}

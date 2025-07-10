@@ -250,27 +250,7 @@ import { formatDate, calculateJobDuration } from '../utils/dateUtils';
     </section>
   )}
 
-  <!-- Social Links Section -->
-  {resumeData.sections.social_links && (
-    <section class="content-section">
-      <header class="section-header">
-        <h2>社群</h2>
-      </header>
-      <div class="section-content">
-        <div class="resume-item">
-          <ul class="resume-item-list">
-            {links.map(link => (
-              <li>
-                <strong>{link.name}</strong>: 
-                <a href={link.url} target="_blank" rel="noopener noreferrer">{link.label}</a>
-              </li>
-            ))}
-          </ul>
-        </div>
-      </div>
-    </section>
-  )}
-</div>
+
 
 <style>
   .resume-container {
