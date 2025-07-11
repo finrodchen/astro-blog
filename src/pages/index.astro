@@ -3,6 +3,7 @@ import BaseHead from '../components/BaseHead.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import FormattedDate from '../components/FormattedDate.astro';
+import BackToTop from '../components/BackToTop.astro';
 import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 import { getCollection } from 'astro:content';
 
@@ -35,9 +36,9 @@ const recentPosts = combinedPosts
 		<Header />
 		<main class="page-enter">
 			<section class="hero-section">
-				<h4 class="content-animate" align="center">
+				<h1 class="content-animate" align="center">
 				Findings and Ideas.
-				</h4>
+				</h1>
 				<div class="hero-images">
 					<img src="https://img.finrod.xyz/2025/07/72587f0a41a5a93ba1b56cfbaacbfb13.png" alt="Hero Image 1" class="hero-image-1 content-animate" loading="lazy" />
 				</div>
@@ -68,6 +69,7 @@ const recentPosts = combinedPosts
 			</section>
 		</main>
 		<Footer />
+		<BackToTop />
 	</body>
 </html>
 
@@ -117,7 +119,8 @@ const recentPosts = combinedPosts
 		text-align: center;
 		margin-bottom: 2rem;
 		color: var(--theme-text-primary);
-		font-size: 2rem;
+		font-size: 2.5rem;
+		font-weight: 700;
 	}
 
 	.recent-posts-grid {
@@ -167,16 +170,16 @@ const recentPosts = combinedPosts
 		color: white;
 		padding: 0.25rem 0.75rem;
 		border-radius: 20px;
-		font-size: 0.75rem;
-		font-weight: 600;
+		font-size: 0.875rem;
+		font-weight: 300;
 		text-transform: uppercase;
 		margin-bottom: 0.5rem;
 	}
 
 	.recent-post-title {
 		margin: 0.5rem 0;
-		font-size: 1.1rem;
-		font-weight: 600;
+		font-size: 1.5rem;
+		font-weight: 700;
 		color: var(--theme-text-primary);
 		line-height: 1.4;
 		display: -webkit-box;
@@ -188,6 +191,7 @@ const recentPosts = combinedPosts
 	.recent-post-date {
 		margin: 0;
 		font-size: 0.875rem;
+		font-weight: 300;
 		color: var(--theme-text-muted);
 	}
 
@@ -215,7 +219,7 @@ const recentPosts = combinedPosts
 		}
 
 		.recent-posts-section h2 {
-			font-size: 1.5rem;
+			font-size: 2rem;
 		}
 	}
 

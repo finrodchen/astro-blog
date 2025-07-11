@@ -12,6 +12,8 @@ const blog = defineCollection({
     pubDate: z.coerce.date(),
     updatedDate: z.coerce.date().optional(),
     heroImage: z.string().optional(),
+    tags: z.union([z.string(), z.array(z.string())]).optional(),
+    author: z.string().optional(),
   }),
 });
 
@@ -19,11 +21,12 @@ const biotechnology = defineCollection({
   loader: glob({ base: "./src/content/biotechnology", pattern: "**/*.{md,mdx}" }),
   schema: z.object({
     title: z.string(),
-    description: z.string().optional(),
+    description: z.string(),
     pubDate: z.coerce.date(),
     updatedDate: z.coerce.date().optional(),
     heroImage: z.string().optional(),
     tags: z.union([z.string(), z.array(z.string())]).optional(),
+    author: z.string().optional(),
   }),
 });
 
@@ -31,11 +34,12 @@ const celltherapy = defineCollection({
   loader: glob({ base: "./src/content/celltherapy", pattern: "**/*.{md,mdx}" }),
   schema: z.object({
     title: z.string(),
-    description: z.string().optional(),
+    description: z.string(),
     pubDate: z.coerce.date(),
     updatedDate: z.coerce.date().optional(),
     heroImage: z.string().optional(),
     tags: z.union([z.string(), z.array(z.string())]).optional(),
+    author: z.string().optional(),
   }),
 });
 
@@ -43,11 +47,12 @@ const coding = defineCollection({
   loader: glob({ base: "./src/content/coding", pattern: "**/*.{md,mdx}" }),
   schema: z.object({
     title: z.string(),
-    description: z.string().optional(),
+    description: z.string(),
     pubDate: z.coerce.date(),
     updatedDate: z.coerce.date().optional(),
     heroImage: z.string().optional(),
     tags: z.union([z.string(), z.array(z.string())]).optional(),
+    author: z.string().optional(),
   }),
 });
 

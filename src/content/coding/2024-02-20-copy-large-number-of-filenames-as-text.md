@@ -5,6 +5,8 @@ description: 要大量複製資料夾內所有檔名，最快速的方法如下�
 heroImage: https://img.finrod.xyz/2025/07/854f31aeacf5417d251fc0eb2b847e62.png
 ---
 
+## 使用Windows指令
+
 要大量複製資料夾內所有檔名，最快速的方法如下：
 
 1. 打開記事本，輸入這段指令：

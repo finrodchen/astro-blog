@@ -15,15 +15,21 @@
 
 <style>
   .toc-container {
-    margin: 2rem 0;
+    position: fixed;
+    top: 120px;
+    left: calc(50% + 360px + 30px);
+    width: 280px;
+    max-height: calc(100vh - 200px);
     background: var(--theme-surface);
     border: 1px solid var(--theme-border);
     border-radius: 12px;
-    box-shadow: var(--theme-shadow-sm);
+    box-shadow: var(--theme-shadow-lg);
     overflow: hidden;
     opacity: 0;
     visibility: hidden;
     transition: all 0.3s ease;
+    z-index: 100;
+    backdrop-filter: blur(10px);
   }
 
   .toc-container.visible {
@@ -84,18 +90,20 @@
   }
 
   .toc-list a.active {
-    color: var(--theme-primary);
-    background: rgba(var(--theme-primary-rgb), 0.1);
-    border-left-color: var(--theme-primary);
-    font-weight: 500;
+    color: var(--theme-primary, #3498db) !important;
+    background: rgba(var(--theme-primary-rgb, 52, 152, 219), 0.1) !important;
+    border-left-color: var(--theme-primary, #3498db) !important;
+    font-weight: 600 !important;
+    transform: translateX(4px);
   }
 
   .toc-list a.active::before {
     content: '▶';
     position: absolute;
     left: 0.5rem;
-    color: var(--theme-primary);
+    color: var(--theme-primary, #3498db);
     font-size: 0.8rem;
+    opacity: 1;
   }
 
   /* h2 標題樣式 */
@@ -104,27 +112,37 @@
     font-size: 0.95rem;
   }
 
+  .toc-nav {
+    padding: 1.5rem;
+    max-height: calc(100vh - 280px);
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: var(--theme-border) transparent;
+  }
+
+  .toc-nav::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  .toc-nav::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  .toc-nav::-webkit-scrollbar-thumb {
+    background: var(--theme-border);
+    border-radius: 3px;
+  }
+
   /* 響應式設計 */
-  @media (max-width: 768px) {
+  @media (max-width: 1400px) {
     .toc-container {
-      margin: 1.5rem 0;
+      display: none;
     }
-    
-    .toc-header {
-      padding: 0.75rem 1rem;
-    }
-    
-    .toc-nav {
-      padding: 1rem;
-    }
-    
-    .toc-list a {
-      padding: 0.5rem 0.75rem;
-      font-size: 0.9rem;
-    }
-    
-    .toc-list .toc-h2 {
-      padding-left: 1rem;
+  }
+  
+  @media (min-width: 1401px) {
+    .toc-container {
+      display: block;
     }
   }
 
@@ -147,8 +165,8 @@
       return;
     }
 
-    // 查找文章中的標題 - 只選擇 h2
-    const headings = document.querySelectorAll('h2, .prose h2, article h2');
+    // 查找文章中的標題 - 擴展選擇器範圍
+    const headings = document.querySelectorAll('h2, .prose h2, article h2, main h2');
     
     if (headings.length === 0) {
       return; // 如果沒有標題，不顯示目錄
@@ -211,18 +229,75 @@
       }
     }
 
-    // 更新活動狀態（簡化版，僅在點擊時更新）
+    // 更新活動狀態
     function updateActiveState(targetId) {
       const tocLinks = tocList.querySelectorAll('a');
       
       // 移除所有活動狀態
       tocLinks.forEach(link => link.classList.remove('active'));
       
-      // 添加活動狀態到點擊的項目
+      // 添加活動狀態到目標項目
       if (targetId) {
         const activeLink = tocList.querySelector(`a[data-target="${targetId}"]`);
         if (activeLink) {
           activeLink.classList.add('active');
+          console.log('ToC: 已設置活動狀態:', targetId, activeLink);
+        } else {
+          console.log('ToC: 找不到目標連結:', targetId);
+        }
+      }
+    }
+
+    // 滾動監聽功能
+    function handleScroll() {
+      const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+      let activeHeading = null;
+      let closestDistance = Infinity;
+      
+      // 找到當前最接近視窗頂部的標題
+      headings.forEach(heading => {
+        const rect = heading.getBoundingClientRect();
+        const distanceFromTop = Math.abs(rect.top - 150); // 150px 為理想的偏移位置
+        
+        // 如果標題在視窗上方或接近頂部
+        if (rect.top <= 200 && distanceFromTop < closestDistance) {
+          closestDistance = distanceFromTop;
+          activeHeading = heading.id;
+        }
+      });
+      
+      // 如果沒有找到合適的標題，使用第一個可見的標題
+      if (!activeHeading) {
+        for (let heading of headings) {
+          const rect = heading.getBoundingClientRect();
+          if (rect.top >= 0 && rect.top <= window.innerHeight) {
+            activeHeading = heading.id;
+            break;
+          }
+        }
+      }
+      
+      // 調試信息
+      if (activeHeading) {
+        console.log('ToC: 當前活動標題:', activeHeading);
+      }
+      
+      // 更新活動狀態
+      if (activeHeading) {
+        updateActiveState(activeHeading);
+      }
+    }
+
+    // 節流函數
+    function throttle(func, limit) {
+      let inThrottle;
+      return function() {
+        const args = arguments;
+        const context = this;
+        if (!inThrottle) {
+          func.apply(context, args);
+          inThrottle = true;
+          setTimeout(() => inThrottle = false, limit);
         }
       }
     }
@@ -243,6 +318,22 @@
         smoothScrollTo(target);
         updateActiveState(target);
       }
+    });
+
+    // 添加滾動事件監聽器
+    const throttledScroll = throttle(handleScroll, 100);
+    window.addEventListener('scroll', throttledScroll);
+    
+    // 初始化時設置活動狀態
+    setTimeout(() => {
+      console.log('ToC: 找到', headings.length, '個標題');
+      headings.forEach((h, i) => console.log(`標題 ${i+1}:`, h.textContent.trim(), 'ID:', h.id));
+      handleScroll();
+    }, 100);
+
+    // 清理函數（當頁面卸載時移除事件監聽器）
+    window.addEventListener('beforeunload', function() {
+      window.removeEventListener('scroll', throttledScroll);
     });
   }
 

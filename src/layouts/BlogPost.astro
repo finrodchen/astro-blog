@@ -7,14 +7,24 @@ import FormattedDate from '../components/FormattedDate.astro';
 import TableOfContents from '../components/TableOfContents.astro';
 import BackToTop from '../components/BackToTop.astro';
 
+
 type Props = CollectionEntry<'blog'>['data'];
 
-const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
+const { title, description, pubDate, updatedDate, heroImage, tags, author } = Astro.props;
 ---
 
 <html lang="en">
 	<head>
-		<BaseHead title={title} description={description} />
+		<BaseHead 
+			title={title} 
+			description={description} 
+			image={heroImage}
+			article={true}
+			author={author}
+			pubDate={pubDate}
+			updatedDate={updatedDate}
+			tags={tags}
+		/>
 		<style>
 			main {
 				width: calc(100% - 2em);
@@ -45,6 +55,8 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
 				padding: 1em;
 				color: var(--theme-text-primary);
 			}
+
+			
 			.title {
 				margin-bottom: 1em;
 				padding: 1em 0;
@@ -54,13 +66,19 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
 			.title h1 {
 				margin: 0 0 0.5em 0;
 				color: var(--theme-text-primary);
+				font-size: 2.5rem;
+				font-weight: 700;
 			}
 			.date {
 				margin-bottom: 0.5em;
 				color: var(--theme-text-secondary);
+				font-size: 0.875rem;
+				font-weight: 300;
 			}
 			.last-updated-on {
 				font-style: italic;
+				font-size: 0.875rem;
+				font-weight: 300;
 			}
 			
 			/* 響應式設計 */
@@ -79,6 +97,7 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
 
 	<body>
 		<Header />
+
 		<main class="page-enter">
 			<article class="content-animate">
 				<div class="hero-image">
@@ -99,7 +118,7 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
 						<h1>{title}</h1>
 						<hr />
 					</div>
-					<TableOfContents />
+
 					<div class="content-animate">
 						<slot />
 					</div>
@@ -108,5 +127,6 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
 		</main>
 		<Footer />
 		<BackToTop />
+		<TableOfContents />
 	</body>
 </html>

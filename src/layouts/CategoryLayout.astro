@@ -3,6 +3,8 @@ import BaseHead from '../components/BaseHead.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import PostList from '../components/PostList.astro';
+import BackToTop from '../components/BackToTop.astro';
+
 import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 import { getCollection } from 'astro:content';
 import type { CollectionEntry } from 'astro:content';
@@ -35,9 +37,11 @@ const posts = (await getCollection(category)).sort(
   </head>
   <body>
     <Header />
+
     <main class="page-enter">
       <PostList posts={posts} category={category} />
     </main>
     <Footer />
+    <BackToTop />
   </body>
 </html>
