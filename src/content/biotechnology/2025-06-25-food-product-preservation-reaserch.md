@@ -1,5 +1,5 @@
 ---
-title: 食品保存期限研究報告
+title: 食品保存期限研究
 pubDate: 2025-06-25
 description: 本文將探討食品保存期限的科學訂定，並與現代食品產業的變化進行比較，探討其影響因素、應用範圍與未來發展趨勢。
 heroImage: https://img.finrod.xyz/2025/07/730526c4bb4fba7a4e64f0fc2a6de705.png
