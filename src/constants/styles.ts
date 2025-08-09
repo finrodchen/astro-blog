@@ -66,6 +66,16 @@ export const FONT_WEIGHTS = {
 } as const;
 
 /**
+ * 字體家族
+ */
+export const FONT_FAMILIES = {
+  primary: '"CustomFont", "Atkinson", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif',
+  fallback: '"Atkinson", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif',
+  system: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif',
+  monospace: '"SF Mono", "Monaco", "Inconsolata", "Roboto Mono", "Source Code Pro", monospace'
+} as const;
+
+/**
  * 邊框半徑
  */
 export const BORDER_RADIUS = {

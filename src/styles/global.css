@@ -4,7 +4,7 @@
   License MIT: https://github.com/HermanMartinus/bearblog/blob/master/LICENSE.md
  */
 
-@import url('https://fonts.googleapis.com/css2?family=Huninn&display=swap');
+/* 自訂字型配置 */
 
 /* 保留原有變數以向後兼容，但優先使用主題變數 */
 :root {
@@ -20,6 +20,26 @@
     0 16px 32px rgba(var(--gray), 33%);
 }
 
+/* 自訂字型定義 */
+@font-face {
+  font-family: "CustomFont";
+  src: url("/fonts/custom-regular.woff2") format("woff2"),
+       url("/fonts/custom-regular.woff") format("woff");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "CustomFont";
+  src: url("/fonts/custom-bold.woff2") format("woff2"),
+       url("/fonts/custom-bold.woff") format("woff");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* 保留 Atkinson 作為備用字型 */
 @font-face {
   font-family: "Atkinson";
   src: url("/fonts/atkinson-regular.woff") format("woff");
@@ -34,8 +54,10 @@
   font-style: normal;
   font-display: swap;
 }
+
 body {
-  font-family: 'Huninn', "Atkinson", sans-serif;
+  /* 使用自訂字型作為主要字型，Atkinson 作為備用 */
+  font-family: "CustomFont", "Atkinson", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   margin: 0;
   padding: 0;
   text-align: left;
