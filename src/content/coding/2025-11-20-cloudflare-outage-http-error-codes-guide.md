@@ -5,8 +5,6 @@ description: 本文以2025年Cloudflare當機事件為引子，深入介紹常�
 heroImage: https://img.finrod.xyz/2025/11/IMG_7958.webp
 ---
 
-這篇部落格文章將以2025年11月Cloudflare全球當機事件為引子，帶你認識常見的HTTP錯誤代碼，了解網站服務背後那些你可能常見卻未必理解的「錯誤頁」。
-
 ### Cloudflare當機事件：網路世界的骨牌效應
 
 2025年11月，Cloudflare發生大規模系統當機，導致全球數以萬計的網站、平台（如X、ChatGPT、Spotify、Google、Canva等）無法正常服務，甚至只出現錯誤訊息。這次事件根源於Cloudflare內部的一個例行設定異動，意外觸發軟體系統Bug，造成全球範圍內的路由中斷和記憶體資源枯竭，許多用戶在短短數小時內無法進入網站，看到的幾乎都是「500 Internal Server Error」或「502 Bad Gateway」等訊息。
